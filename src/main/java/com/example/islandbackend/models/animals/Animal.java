@@ -1,6 +1,9 @@
 package com.example.islandbackend.models.animals;
 
-public abstract class Animal implements Moveable, Reproducible, Dieable {
+public abstract class Animal extends AbstractEntity implements Moveable {
+
+    private Characteristics.EntityCharacteristics characteristics;
+
     @Override
     public void die() {
 
