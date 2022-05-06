@@ -3,24 +3,19 @@ package com.example.islandbackend.models.process;
 import com.example.islandbackend.models.areas.Island;
 import org.springframework.data.redis.core.RedisHash;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
 @RedisHash("Step")
 public class Step {
-    private @Id
-    @GeneratedValue
-    Long stepId;
+    private String id;
     private Long sessionId;
     private int stepNumber;
     private Island islandState;
 
-    public Long getStepId() {
-        return stepId;
+    public String getId() {
+        return id;
     }
 
-    public void setStepId(Long stepId) {
-        this.stepId = stepId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Long getSessionId() {

@@ -2,24 +2,11 @@ package com.example.islandbackend.models.process;
 
 import org.springframework.data.redis.core.RedisHash;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
 @RedisHash("Session")
 public class Session {
-    private @Id
-    @GeneratedValue
-    Long sessionId;
+    private String id;
     private Long startTime;
     private Long endTime;
-
-    public Long getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(Long sessionId) {
-        this.sessionId = sessionId;
-    }
 
     public Long getStartTime() {
         return startTime;
@@ -35,5 +22,13 @@ public class Session {
 
     public void setEndTime(Long endTime) {
         this.endTime = endTime;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

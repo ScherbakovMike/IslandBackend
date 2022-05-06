@@ -8,7 +8,6 @@ public class StepController {
 
     private final StepRepository stepRepository;
 
-
     public StepController(StepRepository stepRepository) {
         this.stepRepository = stepRepository;
     }
