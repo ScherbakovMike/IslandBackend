@@ -1,22 +1,23 @@
 package com.example.islandbackend.controllers;
 
 import com.example.islandbackend.models.process.Session;
-import com.example.islandbackend.repositories.SessionRepository;
-import org.springframework.beans.factory.annotation.Qualifier;
+import com.example.islandbackend.services.SessionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class SessionController {
 
-    private final SessionRepository sessionRepository;
+    private final SessionService sessionService;
 
-    public SessionController(SessionRepository sessionRepository) {
-        this.sessionRepository = sessionRepository;
+    @Autowired
+    public SessionController(SessionService sessionService) {
+        this.sessionService = sessionService;
     }
 
     @PostMapping("/sessions/init")
-    Session newSession(@Qualifier("newSession") Session session) {
-        return sessionRepository.save(session);
+    Session sessionsInit() {
+        return sessionService.init();
     }
 }

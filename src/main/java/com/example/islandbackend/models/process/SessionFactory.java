@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 public class SessionFactory {
     @Bean
     @Qualifier("newSession")
-    public static Session initSession() {
+    public static Session newSession() {
         return new Session();
     }
 }
