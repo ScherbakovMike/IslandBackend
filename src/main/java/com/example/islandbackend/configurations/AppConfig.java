@@ -1,5 +1,6 @@
 package com.example.islandbackend.configurations;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,9 +14,15 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 @EnableRedisRepositories(basePackages = "com.example.islandbackend.repositories")
 public class AppConfig {
 
+    @Value("${spring.redis.host}")
+    private String redisServer;
+
+    @Value("${spring.redis.port}")
+    private Integer redisPort;
+
     @Bean
     public LettuceConnectionFactory redisConnectionFactory() {
-        return new LettuceConnectionFactory(new RedisStandaloneConfiguration("192.168.1.17", 6379));
+        return new LettuceConnectionFactory(new RedisStandaloneConfiguration(redisServer, redisPort));
     }
 
     @Bean

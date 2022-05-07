@@ -1,6 +1,6 @@
 package com.example.islandbackend.models.animals;
 
-public abstract class Animal extends AbstractEntity implements Moveable {
+public abstract class Animal extends AbstractEntity implements Moveable, Dieable {
 
     private Characteristics.EntityCharacteristics characteristics;
 

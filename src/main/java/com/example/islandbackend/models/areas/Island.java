@@ -1,12 +1,42 @@
 package com.example.islandbackend.models.areas;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisHash;
+
+import static com.example.islandbackend.models.animals.Characteristics.kindsOfDieable;
+
+@RedisHash("Island")
 public class Island {
-    private int width = 0;
-    private int height = 0;
+
+    @Value("island.width.default")
+    private static int defaultWidth;
+    @Value("island.height.default")
+    private static int defaultHeight;
+    private int width;
+    private int height;
+
     private final Field[][] fields = new Field[height][width];
 
     public Island(int width, int height) {
         this.width = width;
         this.height = height;
     }
+
+    public static Island newInstance() {
+        Island result = new Island(defaultWidth, defaultHeight);
+        for (int i = 0; i < defaultHeight; i++) {
+            for (int j = 0; j < defaultWidth; j++) {
+                result.fields[i][j] = Field.newInstance();
+            }
+        }
+        return result;
+    }
+
+    public static Island populate(Island island) {
+        var kindsOfDieable = kindsOfDieable();
+
+        return island;
+    }
+
+
 }

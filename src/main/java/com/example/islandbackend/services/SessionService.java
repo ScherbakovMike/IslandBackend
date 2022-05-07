@@ -1,15 +1,11 @@
 package com.example.islandbackend.services;
 
-import com.example.islandbackend.exceptions.InitSessionException;
-import com.example.islandbackend.models.process.Session;
+import com.example.islandbackend.models.processes.Session;
 import com.example.islandbackend.repositories.SessionRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 @Service
 public class SessionService {
@@ -18,10 +14,6 @@ public class SessionService {
 
     private final SessionRepository sessionRepository;
 
-    @Resource
-    @Qualifier("newSession")
-    private Session newSession;
-
     @Autowired
     public SessionService(SessionRepository sessionRepository) {
         this.sessionRepository = sessionRepository;
@@ -29,10 +21,10 @@ public class SessionService {
 
     public Session init() {
         try {
-            return sessionRepository.save(newSession);
+            return sessionRepository.save(Session.newInstance());
         } catch (Exception e) {
             logger.error(getClass().getName(), e);
-            throw new InitSessionException(e);
+            throw e;
         }
     }
 }

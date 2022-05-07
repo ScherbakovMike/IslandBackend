@@ -1,0 +1,1186 @@
+[
+  {
+    "name": "Wolf.class",
+    "weight": 50,
+    "maxOnTheCell": 30,
+    "movementSpeed": 3,
+    "satiatedWeight": 8,
+    "movesForSurvival": 10,
+    "probabilityOfBeingEaten": [
+      {
+        "name": "Wolf.class",
+        "probability": 0
+      },
+      {
+        "name": "Snake.class",
+        "probability": 10
+      },
+      {
+        "name": "Fox.class",
+        "probability": 10
+      },
+      {
+        "name": "Bear.class",
+        "probability": 0
+      },
+      {
+        "name": "Eagle.class",
+        "probability": 10
+      },
+      {
+        "name": "Horse.class",
+        "probability": 30
+      },
+      {
+        "name": "Deer.class",
+        "probability": 40
+      },
+      {
+        "name": "Hare.class",
+        "probability": 70
+      },
+      {
+        "name": "Hamster.class",
+        "probability": 90
+      },
+      {
+        "name": "Goat.class",
+        "probability": 60
+      },
+      {
+        "name": "Sheep.class",
+        "probability": 70
+      },
+      {
+        "name": "Kangaroo.class",
+        "probability": 20
+      },
+      {
+        "name": "Cow.class",
+        "probability": 30
+      },
+      {
+        "name": "Duck.class",
+        "probability": 80
+      },
+      {
+        "name": "Caterpillar.class",
+        "probability": 0
+      },
+      {
+        "name": "Plant.class",
+        "probability": 0
+      }
+    ]
+  },
+  {
+    "name": "Snake.class",
+    "weight": 2,
+    "maxOnTheCell": 123,
+    "movementSpeed": 1,
+    "satiatedWeight": 0.3,
+    "movesForSurvival": 15,
+    "probabilityOfBeingEaten": [
+      {
+        "name": "Wolf.class",
+        "probability": 0
+      },
+      {
+        "name": "Snake.class",
+        "probability": 0
+      },
+      {
+        "name": "Fox.class",
+        "probability": 0
+      },
+      {
+        "name": "Bear.class",
+        "probability": 0
+      },
+      {
+        "name": "Eagle.class",
+        "probability": 0
+      },
+      {
+        "name": "Horse.class",
+        "probability": 0
+      },
+      {
+        "name": "Deer.class",
+        "probability": 0
+      },
+      {
+        "name": "Hare.class",
+        "probability": 50
+      },
+      {
+        "name": "Hamster.class",
+        "probability": 90
+      },
+      {
+        "name": "Goat.class",
+        "probability": 0
+      },
+      {
+        "name": "Sheep.class",
+        "probability": 0
+      },
+      {
+        "name": "Kangaroo.class",
+        "probability": 0
+      },
+      {
+        "name": "Cow.class",
+        "probability": 0
+      },
+      {
+        "name": "Duck.class",
+        "probability": 50
+      },
+      {
+        "name": "Caterpillar.class",
+        "probability": 90
+      },
+      {
+        "name": "Plant.class",
+        "probability": 0
+      }
+    ]
+  },
+  {
+    "name": "Fox.class",
+    "weight": 4,
+    "maxOnTheCell": 50,
+    "movementSpeed": 3,
+    "satiatedWeight": 1,
+    "movesForSurvival": 8,
+    "probabilityOfBeingEaten": [
+      {
+        "name": "Wolf.class",
+        "probability": 0
+      },
+      {
+        "name": "Snake.class",
+        "probability": 20
+      },
+      {
+        "name": "Fox.class",
+        "probability": 0
+      },
+      {
+        "name": "Bear.class",
+        "probability": 0
+      },
+      {
+        "name": "Eagle.class",
+        "probability": 10
+      },
+      {
+        "name": "Horse.class",
+        "probability": 0
+      },
+      {
+        "name": "Deer.class",
+        "probability": 5
+      },
+      {
+        "name": "Hare.class",
+        "probability": 70
+      },
+      {
+        "name": "Hamster.class",
+        "probability": 90
+      },
+      {
+        "name": "Goat.class",
+        "probability": 20
+      },
+      {
+        "name": "Sheep.class",
+        "probability": 20
+      },
+      {
+        "name": "Kangaroo.class",
+        "probability": 5
+      },
+      {
+        "name": "Cow.class",
+        "probability": 0
+      },
+      {
+        "name": "Duck.class",
+        "probability": 80
+      },
+      {
+        "name": "Caterpillar.class",
+        "probability": 0
+      },
+      {
+        "name": "Plant.class",
+        "probability": 0
+      }
+    ]
+  },
+  {
+    "name": "Bear.class",
+    "weight": 250,
+    "maxOnTheCell": 7,
+    "movementSpeed": 2,
+    "satiatedWeight": 38,
+    "movesForSurvival": 15,
+    "probabilityOfBeingEaten": [
+      {
+        "name": "Wolf.class",
+        "probability": 20
+      },
+      {
+        "name": "Snake.class",
+        "probability": 30
+      },
+      {
+        "name": "Fox.class",
+        "probability": 20
+      },
+      {
+        "name": "Bear.class",
+        "probability": 0
+      },
+      {
+        "name": "Eagle.class",
+        "probability": 30
+      },
+      {
+        "name": "Horse.class",
+        "probability": 70
+      },
+      {
+        "name": "Deer.class",
+        "probability": 80
+      },
+      {
+        "name": "Hare.class",
+        "probability": 80
+      },
+      {
+        "name": "Hamster.class",
+        "probability": 90
+      },
+      {
+        "name": "Goat.class",
+        "probability": 70
+      },
+      {
+        "name": "Sheep.class",
+        "probability": 70
+      },
+      {
+        "name": "Kangaroo.class",
+        "probability": 60
+      },
+      {
+        "name": "Cow.class",
+        "probability": 75
+      },
+      {
+        "name": "Duck.class",
+        "probability": 80
+      },
+      {
+        "name": "Caterpillar.class",
+        "probability": 0
+      },
+      {
+        "name": "Plant.class",
+        "probability": 0
+      }
+    ]
+  },
+  {
+    "name": "Eagle.class",
+    "weight": 6,
+    "maxOnTheCell": 166,
+    "movementSpeed": 4,
+    "satiatedWeight": 1,
+    "movesForSurvival": 5,
+    "probabilityOfBeingEaten": [
+      {
+        "name": "Wolf.class",
+        "probability": 0
+      },
+      {
+        "name": "Snake.class",
+        "probability": 50
+      },
+      {
+        "name": "Fox.class",
+        "probability": 0
+      },
+      {
+        "name": "Bear.class",
+        "probability": 0
+      },
+      {
+        "name": "Eagle.class",
+        "probability": 0
+      },
+      {
+        "name": "Horse.class",
+        "probability": 0
+      },
+      {
+        "name": "Deer.class",
+        "probability": 0
+      },
+      {
+        "name": "Hare.class",
+        "probability": 90
+      },
+      {
+        "name": "Hamster.class",
+        "probability": 90
+      },
+      {
+        "name": "Goat.class",
+        "probability": 0
+      },
+      {
+        "name": "Sheep.class",
+        "probability": 0
+      },
+      {
+        "name": "Kangaroo.class",
+        "probability": 0
+      },
+      {
+        "name": "Cow.class",
+        "probability": 0
+      },
+      {
+        "name": "Duck.class",
+        "probability": 85
+      },
+      {
+        "name": "Caterpillar.class",
+        "probability": 20
+      },
+      {
+        "name": "Plant.class",
+        "probability": 0
+      }
+    ]
+  },
+  {
+    "name": "Horse.class",
+    "weight": 300,
+    "maxOnTheCell": 23,
+    "movementSpeed": 3,
+    "satiatedWeight": 45,
+    "movesForSurvival": 5,
+    "probabilityOfBeingEaten": [
+      {
+        "name": "Wolf.class",
+        "probability": 0
+      },
+      {
+        "name": "Snake.class",
+        "probability": 0
+      },
+      {
+        "name": "Fox.class",
+        "probability": 0
+      },
+      {
+        "name": "Bear.class",
+        "probability": 0
+      },
+      {
+        "name": "Eagle.class",
+        "probability": 0
+      },
+      {
+        "name": "Horse.class",
+        "probability": 0
+      },
+      {
+        "name": "Deer.class",
+        "probability": 0
+      },
+      {
+        "name": "Hare.class",
+        "probability": 0
+      },
+      {
+        "name": "Hamster.class",
+        "probability": 0
+      },
+      {
+        "name": "Goat.class",
+        "probability": 0
+      },
+      {
+        "name": "Sheep.class",
+        "probability": 0
+      },
+      {
+        "name": "Kangaroo.class",
+        "probability": 0
+      },
+      {
+        "name": "Cow.class",
+        "probability": 0
+      },
+      {
+        "name": "Duck.class",
+        "probability": 0
+      },
+      {
+        "name": "Caterpillar.class",
+        "probability": 0
+      },
+      {
+        "name": "Plant.class",
+        "probability": 100
+      }
+    ]
+  },
+  {
+    "name": "Deer.class",
+    "weight": 170,
+    "maxOnTheCell": 41,
+    "movementSpeed": 3,
+    "satiatedWeight": 26,
+    "movesForSurvival": 4,
+    "probabilityOfBeingEaten": [
+      {
+        "name": "Wolf.class",
+        "probability": 0
+      },
+      {
+        "name": "Snake.class",
+        "probability": 0
+      },
+      {
+        "name": "Fox.class",
+        "probability": 0
+      },
+      {
+        "name": "Bear.class",
+        "probability": 0
+      },
+      {
+        "name": "Eagle.class",
+        "probability": 0
+      },
+      {
+        "name": "Horse.class",
+        "probability": 0
+      },
+      {
+        "name": "Deer.class",
+        "probability": 0
+      },
+      {
+        "name": "Hare.class",
+        "probability": 0
+      },
+      {
+        "name": "Hamster.class",
+        "probability": 0
+      },
+      {
+        "name": "Goat.class",
+        "probability": 0
+      },
+      {
+        "name": "Sheep.class",
+        "probability": 0
+      },
+      {
+        "name": "Kangaroo.class",
+        "probability": 0
+      },
+      {
+        "name": "Cow.class",
+        "probability": 0
+      },
+      {
+        "name": "Duck.class",
+        "probability": 0
+      },
+      {
+        "name": "Caterpillar.class",
+        "probability": 0
+      },
+      {
+        "name": "Plant.class",
+        "probability": 100
+      }
+    ]
+  },
+  {
+    "name": "Hare.class",
+    "weight": 3,
+    "maxOnTheCell": 750,
+    "movementSpeed": 3,
+    "satiatedWeight": 0.45,
+    "movesForSurvival": 7,
+    "probabilityOfBeingEaten": [
+      {
+        "name": "Wolf.class",
+        "probability": 0
+      },
+      {
+        "name": "Snake.class",
+        "probability": 0
+      },
+      {
+        "name": "Fox.class",
+        "probability": 0
+      },
+      {
+        "name": "Bear.class",
+        "probability": 0
+      },
+      {
+        "name": "Eagle.class",
+        "probability": 0
+      },
+      {
+        "name": "Horse.class",
+        "probability": 0
+      },
+      {
+        "name": "Deer.class",
+        "probability": 0
+      },
+      {
+        "name": "Hare.class",
+        "probability": 0
+      },
+      {
+        "name": "Hamster.class",
+        "probability": 0
+      },
+      {
+        "name": "Goat.class",
+        "probability": 0
+      },
+      {
+        "name": "Sheep.class",
+        "probability": 0
+      },
+      {
+        "name": "Kangaroo.class",
+        "probability": 0
+      },
+      {
+        "name": "Cow.class",
+        "probability": 0
+      },
+      {
+        "name": "Duck.class",
+        "probability": 0
+      },
+      {
+        "name": "Caterpillar.class",
+        "probability": 0
+      },
+      {
+        "name": "Plant.class",
+        "probability": 100
+      }
+    ]
+  },
+  {
+    "name": "Hamster.class",
+    "weight": 0.03,
+    "maxOnTheCell": 10000,
+    "movementSpeed": 1,
+    "satiatedWeight": 0.0075,
+    "movesForSurvival": 3,
+    "probabilityOfBeingEaten": [
+      {
+        "name": "Wolf.class",
+        "probability": 0
+      },
+      {
+        "name": "Snake.class",
+        "probability": 0
+      },
+      {
+        "name": "Fox.class",
+        "probability": 0
+      },
+      {
+        "name": "Bear.class",
+        "probability": 0
+      },
+      {
+        "name": "Eagle.class",
+        "probability": 0
+      },
+      {
+        "name": "Horse.class",
+        "probability": 0
+      },
+      {
+        "name": "Deer.class",
+        "probability": 0
+      },
+      {
+        "name": "Hare.class",
+        "probability": 0
+      },
+      {
+        "name": "Hamster.class",
+        "probability": 0
+      },
+      {
+        "name": "Goat.class",
+        "probability": 0
+      },
+      {
+        "name": "Sheep.class",
+        "probability": 0
+      },
+      {
+        "name": "Kangaroo.class",
+        "probability": 0
+      },
+      {
+        "name": "Cow.class",
+        "probability": 0
+      },
+      {
+        "name": "Duck.class",
+        "probability": 0
+      },
+      {
+        "name": "Caterpillar.class",
+        "probability": 0
+      },
+      {
+        "name": "Plant.class",
+        "probability": 100
+      }
+    ]
+  },
+  {
+    "name": "Goat.class",
+    "weight": 65,
+    "maxOnTheCell": 107,
+    "movementSpeed": 1,
+    "satiatedWeight": 10,
+    "movesForSurvival": 5,
+    "probabilityOfBeingEaten": [
+      {
+        "name": "Wolf.class",
+        "probability": 0
+      },
+      {
+        "name": "Snake.class",
+        "probability": 0
+      },
+      {
+        "name": "Fox.class",
+        "probability": 0
+      },
+      {
+        "name": "Bear.class",
+        "probability": 0
+      },
+      {
+        "name": "Eagle.class",
+        "probability": 0
+      },
+      {
+        "name": "Horse.class",
+        "probability": 0
+      },
+      {
+        "name": "Deer.class",
+        "probability": 0
+      },
+      {
+        "name": "Hare.class",
+        "probability": 0
+      },
+      {
+        "name": "Hamster.class",
+        "probability": 0
+      },
+      {
+        "name": "Goat.class",
+        "probability": 0
+      },
+      {
+        "name": "Sheep.class",
+        "probability": 0
+      },
+      {
+        "name": "Kangaroo.class",
+        "probability": 0
+      },
+      {
+        "name": "Cow.class",
+        "probability": 0
+      },
+      {
+        "name": "Duck.class",
+        "probability": 0
+      },
+      {
+        "name": "Caterpillar.class",
+        "probability": 0
+      },
+      {
+        "name": "Plant.class",
+        "probability": 100
+      }
+    ]
+  },
+  {
+    "name": "Sheep.class",
+    "weight": 45,
+    "maxOnTheCell": 156,
+    "movementSpeed": 1,
+    "satiatedWeight": 7,
+    "movesForSurvival": 5,
+    "probabilityOfBeingEaten": [
+      {
+        "name": "Wolf.class",
+        "probability": 0
+      },
+      {
+        "name": "Snake.class",
+        "probability": 0
+      },
+      {
+        "name": "Fox.class",
+        "probability": 0
+      },
+      {
+        "name": "Bear.class",
+        "probability": 0
+      },
+      {
+        "name": "Eagle.class",
+        "probability": 0
+      },
+      {
+        "name": "Horse.class",
+        "probability": 0
+      },
+      {
+        "name": "Deer.class",
+        "probability": 0
+      },
+      {
+        "name": "Hare.class",
+        "probability": 0
+      },
+      {
+        "name": "Hamster.class",
+        "probability": 0
+      },
+      {
+        "name": "Goat.class",
+        "probability": 0
+      },
+      {
+        "name": "Sheep.class",
+        "probability": 0
+      },
+      {
+        "name": "Kangaroo.class",
+        "probability": 0
+      },
+      {
+        "name": "Cow.class",
+        "probability": 0
+      },
+      {
+        "name": "Duck.class",
+        "probability": 0
+      },
+      {
+        "name": "Caterpillar.class",
+        "probability": 0
+      },
+      {
+        "name": "Plant.class",
+        "probability": 100
+      }
+    ]
+  },
+  {
+    "name": "Kangaroo.class",
+    "weight": 47,
+    "maxOnTheCell": 149,
+    "movementSpeed": 2,
+    "satiatedWeight": 7,
+    "movesForSurvival": 8,
+    "probabilityOfBeingEaten": [
+      {
+        "name": "Wolf.class",
+        "probability": 0
+      },
+      {
+        "name": "Snake.class",
+        "probability": 0
+      },
+      {
+        "name": "Fox.class",
+        "probability": 0
+      },
+      {
+        "name": "Bear.class",
+        "probability": 0
+      },
+      {
+        "name": "Eagle.class",
+        "probability": 0
+      },
+      {
+        "name": "Horse.class",
+        "probability": 0
+      },
+      {
+        "name": "Deer.class",
+        "probability": 0
+      },
+      {
+        "name": "Hare.class",
+        "probability": 0
+      },
+      {
+        "name": "Hamster.class",
+        "probability": 0
+      },
+      {
+        "name": "Goat.class",
+        "probability": 0
+      },
+      {
+        "name": "Sheep.class",
+        "probability": 0
+      },
+      {
+        "name": "Kangaroo.class",
+        "probability": 0
+      },
+      {
+        "name": "Cow.class",
+        "probability": 0
+      },
+      {
+        "name": "Duck.class",
+        "probability": 0
+      },
+      {
+        "name": "Caterpillar.class",
+        "probability": 0
+      },
+      {
+        "name": "Plant.class",
+        "probability": 100
+      }
+    ]
+  },
+  {
+    "name": "Cow.class",
+    "weight": 350,
+    "maxOnTheCell": 20,
+    "movementSpeed": 1,
+    "satiatedWeight": 53,
+    "movesForSurvival": 4,
+    "probabilityOfBeingEaten": [
+      {
+        "name": "Wolf.class",
+        "probability": 0
+      },
+      {
+        "name": "Snake.class",
+        "probability": 0
+      },
+      {
+        "name": "Fox.class",
+        "probability": 0
+      },
+      {
+        "name": "Bear.class",
+        "probability": 0
+      },
+      {
+        "name": "Eagle.class",
+        "probability": 0
+      },
+      {
+        "name": "Horse.class",
+        "probability": 0
+      },
+      {
+        "name": "Deer.class",
+        "probability": 0
+      },
+      {
+        "name": "Hare.class",
+        "probability": 0
+      },
+      {
+        "name": "Hamster.class",
+        "probability": 0
+      },
+      {
+        "name": "Goat.class",
+        "probability": 0
+      },
+      {
+        "name": "Sheep.class",
+        "probability": 0
+      },
+      {
+        "name": "Kangaroo.class",
+        "probability": 0
+      },
+      {
+        "name": "Cow.class",
+        "probability": 0
+      },
+      {
+        "name": "Duck.class",
+        "probability": 0
+      },
+      {
+        "name": "Caterpillar.class",
+        "probability": 0
+      },
+      {
+        "name": "Plant.class",
+        "probability": 100
+      }
+    ]
+  },
+  {
+    "name": "Duck.class",
+    "weight": 1,
+    "maxOnTheCell": 500,
+    "movementSpeed": 1,
+    "satiatedWeight": 0.15,
+    "movesForSurvival": 4,
+    "probabilityOfBeingEaten": [
+      {
+        "name": "Wolf.class",
+        "probability": 0
+      },
+      {
+        "name": "Snake.class",
+        "probability": 0
+      },
+      {
+        "name": "Fox.class",
+        "probability": 0
+      },
+      {
+        "name": "Bear.class",
+        "probability": 0
+      },
+      {
+        "name": "Eagle.class",
+        "probability": 0
+      },
+      {
+        "name": "Horse.class",
+        "probability": 0
+      },
+      {
+        "name": "Deer.class",
+        "probability": 0
+      },
+      {
+        "name": "Hare.class",
+        "probability": 0
+      },
+      {
+        "name": "Hamster.class",
+        "probability": 0
+      },
+      {
+        "name": "Goat.class",
+        "probability": 0
+      },
+      {
+        "name": "Sheep.class",
+        "probability": 0
+      },
+      {
+        "name": "Kangaroo.class",
+        "probability": 0
+      },
+      {
+        "name": "Cow.class",
+        "probability": 0
+      },
+      {
+        "name": "Duck.class",
+        "probability": 0
+      },
+      {
+        "name": "Caterpillar.class",
+        "probability": 50
+      },
+      {
+        "name": "Plant.class",
+        "probability": 100
+      }
+    ]
+  },
+  {
+    "name": "Caterpillar.class",
+    "weight": 0.01,
+    "maxOnTheCell": 10000,
+    "movementSpeed": 1,
+    "satiatedWeight": 0.0025,
+    "movesForSurvival": 1,
+    "probabilityOfBeingEaten": [
+      {
+        "name": "Wolf.class",
+        "probability": 0
+      },
+      {
+        "name": "Snake.class",
+        "probability": 0
+      },
+      {
+        "name": "Fox.class",
+        "probability": 0
+      },
+      {
+        "name": "Bear.class",
+        "probability": 0
+      },
+      {
+        "name": "Eagle.class",
+        "probability": 0
+      },
+      {
+        "name": "Horse.class",
+        "probability": 0
+      },
+      {
+        "name": "Deer.class",
+        "probability": 0
+      },
+      {
+        "name": "Hare.class",
+        "probability": 0
+      },
+      {
+        "name": "Hamster.class",
+        "probability": 0
+      },
+      {
+        "name": "Goat.class",
+        "probability": 0
+      },
+      {
+        "name": "Sheep.class",
+        "probability": 0
+      },
+      {
+        "name": "Kangaroo.class",
+        "probability": 0
+      },
+      {
+        "name": "Cow.class",
+        "probability": 0
+      },
+      {
+        "name": "Duck.class",
+        "probability": 0
+      },
+      {
+        "name": "Caterpillar.class",
+        "probability": 0
+      },
+      {
+        "name": "Plant.class",
+        "probability": 100
+      }
+    ]
+  },
+  {
+    "name": "Plant.class",
+    "weight": 1,
+    "maxOnTheCell": 10000,
+    "movementSpeed": 0,
+    "satiatedWeight": 0,
+    "movesForSurvival": 0,
+    "probabilityOfBeingEaten": [
+      {
+        "name": "Wolf.class",
+        "probability": 0
+      },
+      {
+        "name": "Snake.class",
+        "probability": 0
+      },
+      {
+        "name": "Fox.class",
+        "probability": 0
+      },
+      {
+        "name": "Bear.class",
+        "probability": 0
+      },
+      {
+        "name": "Eagle.class",
+        "probability": 0
+      },
+      {
+        "name": "Horse.class",
+        "probability": 0
+      },
+      {
+        "name": "Deer.class",
+        "probability": 0
+      },
+      {
+        "name": "Hare.class",
+        "probability": 0
+      },
+      {
+        "name": "Hamster.class",
+        "probability": 0
+      },
+      {
+        "name": "Goat.class",
+        "probability": 0
+      },
+      {
+        "name": "Sheep.class",
+        "probability": 0
+      },
+      {
+        "name": "Kangaroo.class",
+        "probability": 0
+      },
+      {
+        "name": "Cow.class",
+        "probability": 0
+      },
+      {
+        "name": "Duck.class",
+        "probability": 0
+      },
+      {
+        "name": "Caterpillar.class",
+        "probability": 0
+      },
+      {
+        "name": "Plant.class",
+        "probability": 0
+      }
+    ]
+  }
+]

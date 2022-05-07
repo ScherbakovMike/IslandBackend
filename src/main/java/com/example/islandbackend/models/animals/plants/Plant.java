@@ -4,7 +4,7 @@ import com.example.islandbackend.models.animals.AbstractEntity;
 import com.example.islandbackend.models.animals.Dieable;
 import com.example.islandbackend.models.animals.Reproducible;
 
-class Plant extends AbstractEntity implements Reproducible, Dieable {
+public class Plant extends AbstractEntity implements Reproducible, Dieable {
 
     @Override
     public void die() {
