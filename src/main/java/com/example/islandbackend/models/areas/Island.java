@@ -1,9 +1,8 @@
 package com.example.islandbackend.models.areas;
 
+import com.example.islandbackend.models.characteristics.CharacteristicsHelpers;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisHash;
-
-import static com.example.islandbackend.models.animals.Characteristics.kindsOfDieable;
 
 @RedisHash("Island")
 public class Island {
@@ -32,8 +31,8 @@ public class Island {
         return result;
     }
 
-    public static Island populate(Island island) {
-        var kindsOfDieable = kindsOfDieable();
+    protected static Island populate(Island island) {
+        var kindsOfDieable = CharacteristicsHelpers.kindsOfDieable();
 
         return island;
     }

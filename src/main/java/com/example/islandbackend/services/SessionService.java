@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SessionService {
+public
+class SessionService {
 
     private static final Logger logger = LoggerFactory.getLogger(SessionService.class);
 

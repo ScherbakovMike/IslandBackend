@@ -9,7 +9,7 @@ import org.springframework.data.redis.core.RedisHash;
 
 @RedisHash("Step")
 @RequiredArgsConstructor
-public class Step {
+class Step {
     @Getter(AccessLevel.PROTECTED)
     private String id;
 
@@ -25,7 +25,7 @@ public class Step {
     @Setter(AccessLevel.PROTECTED)
     private Island islandState;
 
-    public static Step newInstance(Session session) {
+    protected static Step newInstance(Session session) {
         Step result = new Step();
         result.session = session;
         result.stepNumber = 0;

@@ -10,7 +10,8 @@ import java.time.Instant;
 
 @RedisHash("Session")
 @RequiredArgsConstructor
-public class Session {
+public
+class Session {
     @Getter(AccessLevel.PROTECTED)
     private String id;
 

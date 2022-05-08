@@ -12,7 +12,7 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 @Configuration
 @ComponentScan("com.example.islandbackend")
 @EnableRedisRepositories(basePackages = "com.example.islandbackend.repositories")
-public class AppConfig {
+class AppConfig {
 
     @Value("${spring.redis.host}")
     private String redisServer;
