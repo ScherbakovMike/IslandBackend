@@ -5,12 +5,14 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @RequiredArgsConstructor
 @Getter
 @Setter
 public
 class Step {
-    private String id;
+    private String id = UUID.randomUUID().toString();
 
     private Session session;
 

@@ -5,12 +5,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 public class Session {
     @Getter
     @Setter
-    private String id;
+    private String id = UUID.randomUUID().toString();
 
     @Getter
     @Setter

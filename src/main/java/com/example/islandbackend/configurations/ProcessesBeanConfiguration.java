@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 import java.util.Date;
-import java.util.UUID;
 
 @Configuration
 @NoArgsConstructor
@@ -25,7 +24,6 @@ public class ProcessesBeanConfiguration {
     @Scope("prototype")
     public static Session createSession() {
         Session result = new Session();
-        result.setId(UUID.randomUUID().toString());
         result.setStartTime(new Date());
         return result;
     }
@@ -35,7 +33,6 @@ public class ProcessesBeanConfiguration {
     public static Step createStep(Session session) {
         Step result = new Step();
         result.setSession(session);
-        result.setId(UUID.randomUUID().toString());
         result.setStepNumber(0);
         result.setIslandState(Island.newInstance());
         result.getIslandState().setCurrentStep(result);
