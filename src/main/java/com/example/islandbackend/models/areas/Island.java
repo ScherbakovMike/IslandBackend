@@ -2,6 +2,7 @@ package com.example.islandbackend.models.areas;
 
 import com.example.islandbackend.models.animals.AbstractEntity;
 import com.example.islandbackend.models.characteristics.CharacteristicsHelpers;
+import com.example.islandbackend.models.processes.Step;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -25,10 +27,12 @@ public class Island {
     private String id;
     private Integer width;
     private Integer height;
+    private Step currentStep;
 
     private Island() {
         this.width = defaultWidth;
         this.height = defaultHeight;
+        this.id = UUID.randomUUID().toString();
     }
 
     public static Island newInstance() {

@@ -4,7 +4,9 @@ import com.example.islandbackend.models.processes.Session;
 import com.example.islandbackend.models.processes.Step;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class StepPresentator implements ObjectPresentator {
 
     @JsonIgnore
@@ -12,11 +14,6 @@ public class StepPresentator implements ObjectPresentator {
 
     @JsonIgnore
     private final Session session;
-
-    public StepPresentator(Step step) {
-        this.step = step;
-        this.session = step.getSession();
-    }
 
     @JsonProperty("sessionId")
     String getSessionId() {
@@ -31,5 +28,10 @@ public class StepPresentator implements ObjectPresentator {
     @JsonProperty("stepNumber")
     Integer getStepNumber() {
         return step.getStepNumber();
+    }
+
+    @JsonProperty("islandId")
+    String getIslandIdNumber() {
+        return step.getIslandState().getId();
     }
 }

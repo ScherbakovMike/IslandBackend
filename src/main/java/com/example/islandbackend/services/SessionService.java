@@ -35,10 +35,17 @@ public class SessionService {
             Step step = stepService.create(session);
             session.setCurrentStep(step);
             sessionDispatcher.getSessions().put(session.getId(), session);
+            sessionDispatcher.getSteps().put(step.getId(), step);
+            sessionDispatcher.getIslands().put(step.getIslandState().getId(), step.getIslandState());
             return JsonBodyGenerator.build(new SessionPresentator(session));
         } catch (Exception e) {
             logger.error(getClass().getName(), e);
             throw new RuntimeException(e);
         }
+    }
+
+    public String info(String sessionId) {
+        Session session = sessionDispatcher.getSessionById(sessionId);
+        return JsonBodyGenerator.build(new SessionPresentator(session));
     }
 }

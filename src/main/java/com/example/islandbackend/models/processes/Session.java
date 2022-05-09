@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @RequiredArgsConstructor
 public class Session {
     @Getter
@@ -12,11 +14,11 @@ public class Session {
 
     @Getter
     @Setter
-    private Long startTime;
+    private Date startTime;
 
     @Getter
     @Setter
-    private Long endTime;
+    private Date endTime;
 
     @Getter
     @Setter

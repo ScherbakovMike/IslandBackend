@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-import java.time.Instant;
+import java.util.Date;
 import java.util.UUID;
 
 @Configuration
@@ -26,7 +26,7 @@ public class ProcessesBeanConfiguration {
     public static Session createSession() {
         Session result = new Session();
         result.setId(UUID.randomUUID().toString());
-        result.setStartTime(Instant.now().toEpochMilli());
+        result.setStartTime(new Date());
         return result;
     }
 
@@ -38,6 +38,7 @@ public class ProcessesBeanConfiguration {
         result.setId(UUID.randomUUID().toString());
         result.setStepNumber(0);
         result.setIslandState(Island.newInstance());
+        result.getIslandState().setCurrentStep(result);
         return result;
     }
 }
