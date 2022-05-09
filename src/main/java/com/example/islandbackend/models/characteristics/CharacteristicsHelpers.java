@@ -1,14 +1,32 @@
 package com.example.islandbackend.models.characteristics;
 
-import com.example.islandbackend.models.animals.Dieable;
+import com.example.islandbackend.models.animals.AbstractEntity;
 import com.example.islandbackend.models.animals.herbivores.*;
 import com.example.islandbackend.models.animals.plants.Plant;
 import com.example.islandbackend.models.animals.predators.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class CharacteristicsHelpers {
-    public static List<Class<? extends Dieable>> kindsOfDieable() {
+
+    private static final String defaultCharacteristicsPropertiesFileName = "DefaultCharacteristicsProperties.json";
+    private static final Logger logger = LoggerFactory.getLogger(CharacteristicsHelpers.class);
+    public static final Map<Class<? extends AbstractEntity>, EntityCharacteristics> defaultCharacteristics =
+            loadDefaultEntityCharacteristicsFromFiles();
+
+    private CharacteristicsHelpers() {
+    }
+
+    public static List<Class<? extends AbstractEntity>> kindsOfEntities() {
         return List.of(Caterpillar.class,
                 Cow.class,
                 Deer.class,
@@ -27,29 +45,46 @@ public class CharacteristicsHelpers {
                 Plant.class);
     }
 
-    public static Boolean loadDefaultEntityCharacteristicsFromFiles() {
-        return true;
+    public static Map<Class<? extends AbstractEntity>, EntityCharacteristics> loadDefaultEntityCharacteristicsFromFiles() {
+        File fileOfProperties = new File(Objects.requireNonNull(
+                        CharacteristicsHelpers.class.getClassLoader().getResource(defaultCharacteristicsPropertiesFileName))
+                .getFile());
+        ObjectMapper mapper = new ObjectMapper();
+
+        try {
+            List<EntityCharacteristics> entityCharacteristics =
+                    Arrays.asList(mapper.readValue(fileOfProperties, EntityCharacteristics[].class));
+            resolveClassNameForEntityCharacteristics(entityCharacteristics);
+
+            return entityCharacteristics.stream()
+                    .collect(Collectors.toMap(EntityCharacteristics::getClassName, Function.identity()));
+        } catch (Exception e) {
+            logger.error(CharacteristicsHelpers.class.getName(), e);
+            throw new RuntimeException(e);
+        }
+
     }
 
+    public static void resolveClassNameForEntityCharacteristics(List<EntityCharacteristics> entityCharacteristics) {
+        List<Class<? extends AbstractEntity>> kindsOfEntities = kindsOfEntities();
 
-    //    protected static class ProbabilityOfBeingEaten {
-//        private static final Map<Class<Dieable>, ProbabilityParams> map = new HashMap<>();
-//
-//        protected static Integer getProbability(Dieable who, Dieable whom) {
-//            Optional<ProbabilityParams> probability = map.entrySet().stream()
-//                    .filter(dieableProbabilityParamsEntry ->
-//                            dieableProbabilityParamsEntry.getKey() == who.getClass()
-//                                    && dieableProbabilityParamsEntry.getValue().whom == whom.getClass())
-//                    .map(Map.Entry::getValue)
-//                    .findFirst();
-//            return probability.orElseThrow(() ->
-//                    new RuntimeException("Probability not found for pair: who: %s, whom: %s"
-//                            .formatted(who.getClass().getSimpleName(), whom.getClass().getSimpleName())))
-//                    .probability;
-//        }
-//
-//        private record ProbabilityParams(Class<Dieable> who, Class<Dieable> whom, Integer probability) {
-//        }
-//
-//    }
+        entityCharacteristics.forEach(characteristic ->
+                characteristic.setClassName(kindsOfEntities.stream()
+                        .filter(it -> (it.getSimpleName() + ".class").equals(characteristic.getSimpleClassName()))
+                        .findFirst()
+                        .orElseThrow())
+        );
+
+        entityCharacteristics.forEach(characteristic ->
+                characteristic.getProbabilityOfBeingEatenBySimpleClassName().forEach((simpleClassName, probability) -> {
+                            Class<? extends AbstractEntity> className = kindsOfEntities.stream()
+                                    .filter(it -> (it.getSimpleName() + ".class").equals(simpleClassName))
+                                    .findFirst()
+                                    .orElseThrow();
+                            characteristic.getProbabilityOfBeingEatenByClassName().put(className, probability);
+                        }
+                )
+        );
+    }
+
 }

@@ -1,31 +1,44 @@
 package com.example.islandbackend.services;
 
 import com.example.islandbackend.models.processes.Session;
-import com.example.islandbackend.repositories.SessionRepository;
+import com.example.islandbackend.models.processes.SessionDispatcher;
+import com.example.islandbackend.models.processes.Step;
+import com.example.islandbackend.presentators.JsonBodyGenerator;
+import com.example.islandbackend.presentators.SessionPresentator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 @Service
-public
-class SessionService {
+public class SessionService {
+
+    private final ApplicationContext context;
 
     private static final Logger logger = LoggerFactory.getLogger(SessionService.class);
-
-    private final SessionRepository sessionRepository;
+    private final StepService stepService;
+    private final SessionDispatcher sessionDispatcher;
 
     @Autowired
-    public SessionService(SessionRepository sessionRepository) {
-        this.sessionRepository = sessionRepository;
+    public SessionService(StepService stepService,
+                          SessionDispatcher sessionDispatcher,
+                          ApplicationContext context) {
+        this.stepService = stepService;
+        this.sessionDispatcher = sessionDispatcher;
+        this.context = context;
     }
 
-    public Session init() {
+    public String init() {
         try {
-            return sessionRepository.save(Session.newInstance());
+            Session session = (Session) context.getBean("Session");
+            Step step = stepService.create(session);
+            session.setCurrentStep(step);
+            sessionDispatcher.getSessions().put(session.getId(), session);
+            return JsonBodyGenerator.build(new SessionPresentator(session));
         } catch (Exception e) {
             logger.error(getClass().getName(), e);
-            throw e;
+            throw new RuntimeException(e);
         }
     }
 }

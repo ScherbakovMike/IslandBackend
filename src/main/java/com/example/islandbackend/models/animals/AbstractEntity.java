@@ -1,11 +1,14 @@
 package com.example.islandbackend.models.animals;
 
-import lombok.AccessLevel;
+import com.example.islandbackend.models.characteristics.EntityCharacteristics;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
+@Setter
 public abstract class AbstractEntity implements Reproducible, Dieable {
-    @Getter(AccessLevel.PROTECTED)
-    @Setter(AccessLevel.PROTECTED)
+    private String id;
     private Boolean isAlive = true;
+    private EntityCharacteristics characteristics;
+
 }
