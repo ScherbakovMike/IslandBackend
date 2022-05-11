@@ -15,7 +15,7 @@ public class Session {
 
     @Getter
     @Setter
-    private Date startTime;
+    private Date startTime = new Date();
 
     @Getter
     @Setter

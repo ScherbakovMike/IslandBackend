@@ -12,12 +12,10 @@ import java.util.UUID;
 @Setter
 public class Field {
 
-    private String id;
+    private String id = UUID.randomUUID().toString();
     private final List<AbstractEntity> entities = new ArrayList<>();
 
     protected static Field newInstance() {
-        Field result = new Field();
-        result.id = UUID.randomUUID().toString();
-        return result;
+        return new Field();
     }
 }

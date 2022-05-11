@@ -19,21 +19,14 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Getter
 @Setter
 public class Island {
-    private static final ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
     private static Integer defaultWidth = 20;
     private static Integer defaultHeight = 40;
     private static Random random = new Random();
     private final List<List<Field>> fields = new ArrayList<>();
-    private String id;
-    private Integer width;
-    private Integer height;
+    private String id = UUID.randomUUID().toString();
+    private Integer width = defaultWidth;
+    private Integer height = defaultHeight;
     private Step currentStep;
-
-    private Island() {
-        this.width = defaultWidth;
-        this.height = defaultHeight;
-        this.id = UUID.randomUUID().toString();
-    }
 
     public static Island newInstance() {
         Island result = new Island();
@@ -49,6 +42,7 @@ public class Island {
     }
 
     protected void populate() {
+        var executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
         var kindsOfEntities = CharacteristicsHelpers.kindsOfEntities();
 
         List<AbstractEntity> entities = new ArrayList<>();
@@ -68,6 +62,8 @@ public class Island {
                 throw new RuntimeException(e);
             }
         });
+
+        executor.shutdown();
     }
 
     private List<? extends AbstractEntity> populateFieldByKind(Class<? extends AbstractEntity> kind, Field field)
@@ -85,4 +81,15 @@ public class Island {
         return entitiesInField;
     }
 
+    protected void reproduce() {
+
+    }
+
+    protected void feed() {
+
+    }
+
+    protected void move() {
+
+    }
 }
