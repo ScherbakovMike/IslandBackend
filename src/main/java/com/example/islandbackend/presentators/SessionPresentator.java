@@ -38,4 +38,9 @@ public class SessionPresentator implements ObjectPresentator {
     String getCurrentStepId() {
         return session.getCurrentStep().getId();
     }
+
+    @JsonProperty("islandId")
+    String getIslandId() {
+        return session.getCurrentStep().getIslandState().getId();
+    }
 }
