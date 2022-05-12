@@ -1,10 +1,7 @@
 package com.example.islandbackend.models.animals.plants;
 
 import com.example.islandbackend.models.animals.AbstractEntity;
-import com.example.islandbackend.models.animals.Dieable;
-import com.example.islandbackend.models.animals.Reproducible;
-
-public class Plant extends AbstractEntity implements Reproducible, Dieable {
+public class Plant extends AbstractEntity {
 
     @Override
     public void die() {

@@ -3,7 +3,7 @@ package com.example.islandbackend.models.animals;
 import lombok.Getter;
 import lombok.Setter;
 
-public abstract class Animal extends AbstractEntity implements Moveable, Dieable {
+public abstract class Animal extends AbstractEntity implements Moveable {
 
     @Getter @Setter
     private Double satiety;
