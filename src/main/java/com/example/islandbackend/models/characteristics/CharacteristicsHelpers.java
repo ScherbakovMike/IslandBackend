@@ -9,10 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -56,13 +53,24 @@ public class CharacteristicsHelpers {
                     Arrays.asList(mapper.readValue(fileOfProperties, EntityCharacteristics[].class));
             resolveClassNameForEntityCharacteristics(entityCharacteristics);
 
-            return entityCharacteristics.stream()
-                    .collect(Collectors.toMap(EntityCharacteristics::getClassName, Function.identity()));
+            Map<Class<? extends AbstractEntity>, EntityCharacteristics> resultToProcess =
+                    entityCharacteristics.stream()
+                            .collect(Collectors.toMap(EntityCharacteristics::getClassName, Function.identity()));
+
+            resultToProcess.forEach((className, characteristics) -> {
+                var unsortedMap = characteristics.getProbabilityOfBeingEatenByClassName();
+                var sortedMap = new LinkedHashMap<Class<? extends AbstractEntity>, Integer>();
+                unsortedMap.entrySet().stream().sorted(
+                        Map.Entry.comparingByValue()).forEach(entry ->
+                        sortedMap.put(entry.getKey(), entry.getValue()));
+                characteristics.setProbabilityOfBeingEatenByClassName(sortedMap);
+            });
+
+            return resultToProcess;
         } catch (Exception e) {
             logger.error(CharacteristicsHelpers.class.getName(), e);
             throw new RuntimeException(e);
         }
-
     }
 
     public static void resolveClassNameForEntityCharacteristics(List<EntityCharacteristics> entityCharacteristics) {
@@ -76,14 +84,15 @@ public class CharacteristicsHelpers {
         );
 
         entityCharacteristics.forEach(characteristic ->
-                characteristic.getProbabilityOfBeingEatenBySimpleClassName().forEach((simpleClassName, probability) -> {
-                            Class<? extends AbstractEntity> className = kindsOfEntities.stream()
-                                    .filter(it -> (it.getSimpleName() + ".class").equals(simpleClassName))
-                                    .findFirst()
-                                    .orElseThrow();
-                            characteristic.getProbabilityOfBeingEatenByClassName().put(className, probability);
-                        }
-                )
+                characteristic.getProbabilityOfBeingEatenBySimpleClassName()
+                        .forEach((simpleClassName, probability) -> {
+                                    Class<? extends AbstractEntity> className = kindsOfEntities.stream()
+                                            .filter(it -> (it.getSimpleName() + ".class").equals(simpleClassName))
+                                            .findFirst()
+                                            .orElseThrow();
+                                    characteristic.getProbabilityOfBeingEatenByClassName().put(className, probability);
+                                }
+                        )
         );
     }
 }

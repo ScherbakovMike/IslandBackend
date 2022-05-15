@@ -1,6 +1,8 @@
 package com.example.islandbackend.models.areas;
 
 import com.example.islandbackend.models.animals.AbstractEntity;
+import com.example.islandbackend.models.animals.Animal;
+import com.example.islandbackend.models.animals.plants.Plant;
 import com.example.islandbackend.models.characteristics.CharacteristicsHelpers;
 import com.example.islandbackend.models.processes.Step;
 import com.example.islandbackend.threadhelpers.CallableWithArgument;
@@ -8,15 +10,14 @@ import com.example.islandbackend.threadhelpers.CallableWithTwoArguments;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -47,14 +48,7 @@ public class Island {
 
     protected void populate() {
         kindsOfEntities.forEach(kind -> executeOnEachField(this::fillTheFieldByEntities, kind));
-        while ((executor.getTaskCount() - executor.getCompletedTaskCount()) > 0) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-
-            }
-        }
-        executor.shutdown();
+        waitResult();
     }
 
     private List<? extends AbstractEntity> fillTheFieldByEntities(Class<? extends AbstractEntity> kind, Field field) {
@@ -98,8 +92,65 @@ public class Island {
     }
 
     private List<? extends AbstractEntity> feedAnimalsOnField(Field field) {
+        List<AbstractEntity> survivedEntities = new ArrayList<>();
 
- 
+        var defaultCharacteristics = CharacteristicsHelpers.defaultCharacteristics;
+        var queuesByKind = new HashMap<Class<? extends AbstractEntity>, ConcurrentLinkedQueue<AbstractEntity>>();
+        field.getEntities()
+                .stream()
+                .collect(Collectors.groupingBy(AbstractEntity::getClass))
+                .forEach((className, entityList) -> queuesByKind.put(className, new ConcurrentLinkedQueue<>(entityList)));
+        queuesByKind.forEach((className, queueOfEntity) -> {
+            if (className != Plant.class) {
+                while (!queueOfEntity.isEmpty()) {
+
+                    var firstRival = queueOfEntity.poll();
+                    if (firstRival == null)
+                        break;
+                    var characteristics = defaultCharacteristics.get(className);
+
+                    if ((firstRival instanceof Animal) &&
+                            (((Animal) firstRival).getSatiety() >= characteristics.getSatiatedWeight())) {
+                        survivedEntities.add(firstRival);
+                        continue;
+                    }
+
+                    LinkedHashMap<Class<? extends AbstractEntity>, Integer> probabilityOfBeingEaten =
+                            characteristics.getProbabilityOfBeingEatenByClassName();
+                    var foundSecondRival = false;
+                    for (int i = (probabilityOfBeingEaten.size() - 1); i >= 0 && !foundSecondRival; i--) {
+                        var entry = ((Map.Entry<Class<? extends AbstractEntity>, Integer>)
+                                probabilityOfBeingEaten.entrySet().toArray()[i]);
+                        var probability = entry.getValue();
+                        if (probability > 0) {
+                            var queueOfRival = queuesByKind.get(entry.getKey());
+                            if (queueOfRival.isEmpty())
+                                continue;
+                            var secondRival = queueOfRival.poll();
+                            foundSecondRival = true;
+                            var dealth = (random.nextInt(100) + 1) <= probability;
+                            if (dealth) {
+                                survivedEntities.add(firstRival);
+                                Double currentSatiety = ((Animal) firstRival).getSatiety();
+                                Double weightSecondRival = defaultCharacteristics.get(secondRival.getClass()).getWeight();
+                                Double maxSatiety = characteristics.getSatiatedWeight();
+                                ((Animal) firstRival).setSatiety(
+                                        (currentSatiety + weightSecondRival) > maxSatiety
+                                                ? maxSatiety : (currentSatiety + weightSecondRival)
+                                );
+                                secondRival.die();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        if (queuesByKind.containsKey(Plant.class)) {
+            var plantsQueue = queuesByKind.get(Plant.class);
+            survivedEntities.addAll(plantsQueue);
+        }
+        field.getEntities().clear();
+        field.getEntities().addAll(survivedEntities);
         return field.getEntities();
     }
 
@@ -107,8 +158,19 @@ public class Island {
 
     }
 
-    protected void feed() {
+    public void feed() {
         executeOnEachField(this::feedAnimalsOnField);
+        waitResult();
+    }
+
+    private void waitResult() {
+        while ((executor.getTaskCount() - executor.getCompletedTaskCount()) > 0) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+
+            }
+        }
     }
 
     protected void move() {

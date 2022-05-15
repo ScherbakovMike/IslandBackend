@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,8 +22,8 @@ public class EntityCharacteristics {
     private Double satiatedWeight;
     private Integer movesForSurvival;
     private Integer satietyDecreasePerStepPercent;
-    private Map<Class<? extends AbstractEntity>, Integer> probabilityOfBeingEatenByClassName = new HashMap<>();
-    private final Map<String, Integer> probabilityOfBeingEatenBySimpleClassName = new HashMap<>();
+    private LinkedHashMap<Class<? extends AbstractEntity>, Integer> probabilityOfBeingEatenByClassName = new LinkedHashMap<>();
+    private LinkedHashMap<String, Integer> probabilityOfBeingEatenBySimpleClassName = new LinkedHashMap<>();
 
     @JsonIgnore
     private Class<? extends AbstractEntity> className;

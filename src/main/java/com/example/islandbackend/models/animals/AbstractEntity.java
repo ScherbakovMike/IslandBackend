@@ -10,4 +10,9 @@ import java.util.UUID;
 public abstract class AbstractEntity implements Reproducible, Dieable {
     private String id = UUID.randomUUID().toString();
     private Boolean isAlive = true;
+
+    @Override
+    public void die() {
+        isAlive = false;
+    }
 }

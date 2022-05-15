@@ -33,4 +33,13 @@ class SessionController {
     String sessionsInfo(@PathVariable("id") String sessionId) {
         return sessionService.info(sessionId);
     }
+
+    @PostMapping(
+            value = "/sessions/{id}/next",
+            produces = "application/json"
+    )
+    @ResponseBody
+    String nextStep(@PathVariable("id") String sessionId) {
+        return sessionService.nextStep(sessionId);
+    }
 }
