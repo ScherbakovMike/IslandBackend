@@ -6,6 +6,7 @@ import com.example.islandbackend.models.processes.SessionDispatcher;
 import com.example.islandbackend.models.processes.Step;
 import com.example.islandbackend.presentators.JsonBodyGenerator;
 import com.example.islandbackend.presentators.SessionPresentator;
+import com.example.islandbackend.presentators.StepPresentator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,6 @@ public class SessionService {
         nextStep.getIslandState().setCurrentStep(nextStep);
         session.setCurrentStep(nextStep);
 
-        return islandService.summary(currentIslandState.getId());
+        return JsonBodyGenerator.build(new StepPresentator(nextStep, nextStep.getSession()));
     }
 }
