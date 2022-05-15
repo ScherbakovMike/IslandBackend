@@ -9,82 +9,66 @@
     "movesForSurvival": 10,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Wolf.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Snake.class",
         "probability": 10
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Fox.class",
         "probability": 10
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Bear.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Eagle.class",
         "probability": 10
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Horse.class",
         "probability": 30
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Deer.class",
         "probability": 40
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hare.class",
         "probability": 70
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hamster.class",
         "probability": 90
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Goat.class",
         "probability": 60
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Sheep.class",
         "probability": 70
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Kangaroo.class",
         "probability": 20
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Cow.class",
         "probability": 30
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Duck.class",
         "probability": 80
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Caterpillar.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Plant.class",
         "probability": 0
       }
@@ -100,82 +84,66 @@
     "movesForSurvival": 15,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Wolf.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Snake.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Fox.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Bear.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Eagle.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Horse.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Deer.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hare.class",
         "probability": 50
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hamster.class",
         "probability": 90
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Goat.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Sheep.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Kangaroo.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Cow.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Duck.class",
         "probability": 50
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Caterpillar.class",
         "probability": 90
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Plant.class",
         "probability": 0
       }
@@ -191,82 +159,66 @@
     "movesForSurvival": 8,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Wolf.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Snake.class",
         "probability": 20
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Fox.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Bear.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Eagle.class",
         "probability": 10
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Horse.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Deer.class",
         "probability": 5
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hare.class",
         "probability": 70
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hamster.class",
         "probability": 90
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Goat.class",
         "probability": 20
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Sheep.class",
         "probability": 20
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Kangaroo.class",
         "probability": 5
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Cow.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Duck.class",
         "probability": 80
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Caterpillar.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Plant.class",
         "probability": 0
       }
@@ -282,82 +234,66 @@
     "movesForSurvival": 15,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Wolf.class",
         "probability": 20
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Snake.class",
         "probability": 30
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Fox.class",
         "probability": 20
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Bear.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Eagle.class",
         "probability": 30
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Horse.class",
         "probability": 70
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Deer.class",
         "probability": 80
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hare.class",
         "probability": 80
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hamster.class",
         "probability": 90
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Goat.class",
         "probability": 70
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Sheep.class",
         "probability": 70
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Kangaroo.class",
         "probability": 60
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Cow.class",
         "probability": 75
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Duck.class",
         "probability": 80
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Caterpillar.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Plant.class",
         "probability": 0
       }
@@ -373,82 +309,66 @@
     "movesForSurvival": 5,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Wolf.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Snake.class",
         "probability": 50
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Fox.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Bear.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Eagle.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Horse.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Deer.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hare.class",
         "probability": 90
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hamster.class",
         "probability": 90
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Goat.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Sheep.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Kangaroo.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Cow.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Duck.class",
         "probability": 85
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Caterpillar.class",
         "probability": 20
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Plant.class",
         "probability": 0
       }
@@ -464,82 +384,66 @@
     "movesForSurvival": 5,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Wolf.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Snake.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Fox.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Bear.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Eagle.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Horse.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Deer.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hare.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hamster.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Goat.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Sheep.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Kangaroo.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Cow.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Duck.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Caterpillar.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Plant.class",
         "probability": 100
       }
@@ -555,82 +459,66 @@
     "movesForSurvival": 4,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Wolf.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Snake.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Fox.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Bear.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Eagle.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Horse.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Deer.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hare.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hamster.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Goat.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Sheep.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Kangaroo.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Cow.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Duck.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Caterpillar.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Plant.class",
         "probability": 100
       }
@@ -646,82 +534,66 @@
     "movesForSurvival": 7,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Wolf.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Snake.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Fox.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Bear.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Eagle.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Horse.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Deer.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hare.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hamster.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Goat.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Sheep.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Kangaroo.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Cow.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Duck.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Caterpillar.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Plant.class",
         "probability": 100
       }
@@ -737,82 +609,66 @@
     "movesForSurvival": 3,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Wolf.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Snake.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Fox.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Bear.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Eagle.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Horse.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Deer.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hare.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hamster.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Goat.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Sheep.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Kangaroo.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Cow.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Duck.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Caterpillar.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Plant.class",
         "probability": 100
       }
@@ -828,82 +684,66 @@
     "movesForSurvival": 5,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Wolf.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Snake.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Fox.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Bear.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Eagle.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Horse.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Deer.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hare.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hamster.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Goat.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Sheep.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Kangaroo.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Cow.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Duck.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Caterpillar.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Plant.class",
         "probability": 100
       }
@@ -919,82 +759,66 @@
     "movesForSurvival": 5,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Wolf.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Snake.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Fox.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Bear.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Eagle.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Horse.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Deer.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hare.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hamster.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Goat.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Sheep.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Kangaroo.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Cow.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Duck.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Caterpillar.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Plant.class",
         "probability": 100
       }
@@ -1010,82 +834,66 @@
     "movesForSurvival": 8,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Wolf.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Snake.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Fox.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Bear.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Eagle.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Horse.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Deer.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hare.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hamster.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Goat.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Sheep.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Kangaroo.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Cow.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Duck.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Caterpillar.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Plant.class",
         "probability": 100
       }
@@ -1101,82 +909,66 @@
     "movesForSurvival": 4,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Wolf.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Snake.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Fox.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Bear.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Eagle.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Horse.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Deer.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hare.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hamster.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Goat.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Sheep.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Kangaroo.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Cow.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Duck.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Caterpillar.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Plant.class",
         "probability": 100
       }
@@ -1192,82 +984,66 @@
     "movesForSurvival": 4,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Wolf.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Snake.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Fox.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Bear.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Eagle.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Horse.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Deer.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hare.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hamster.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Goat.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Sheep.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Kangaroo.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Cow.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Duck.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Caterpillar.class",
         "probability": 50
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Plant.class",
         "probability": 100
       }
@@ -1283,82 +1059,66 @@
     "movesForSurvival": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Wolf.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Snake.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Fox.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Bear.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Eagle.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Horse.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Deer.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hare.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hamster.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Goat.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Sheep.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Kangaroo.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Cow.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Duck.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Caterpillar.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Plant.class",
         "probability": 100
       }
@@ -1374,82 +1134,66 @@
     "movesForSurvival": 0,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Wolf.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Snake.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Fox.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Bear.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Eagle.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Horse.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Deer.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hare.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Hamster.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Goat.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Sheep.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Kangaroo.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Cow.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Duck.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Caterpillar.class",
         "probability": 0
       },
       {
-        "satietyDecreasePerStepPercent": 30,
         "simpleClassName": "Plant.class",
         "probability": 0
       }

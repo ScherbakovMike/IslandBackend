@@ -16,7 +16,10 @@ public class StepController {
         this.stepService = stepService;
     }
 
-    @PostMapping("/steps/{id}/info")
+    @PostMapping(
+            value = "/steps/{id}/info",
+            produces = "application/json"
+    )
     @ResponseBody
     String stepInfo(@PathVariable("id") String id) {
         return stepService.info(id);

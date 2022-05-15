@@ -16,15 +16,21 @@ class SessionController {
         this.sessionService = sessionService;
     }
 
-    @PostMapping("/sessions/init")
+    @PostMapping(
+            value = "/sessions/init",
+            produces = "application/json"
+    )
     @ResponseBody
     String sessionsInit() {
         return sessionService.init();
     }
 
-    @PostMapping("/sessions/{id}/info")
+    @PostMapping(
+            value = "/sessions/{id}/info",
+            produces = "application/json"
+    )
     @ResponseBody
-    String sessionsInit(@PathVariable("id") String sessionId) {
+    String sessionsInfo(@PathVariable("id") String sessionId) {
         return sessionService.info(sessionId);
     }
 }

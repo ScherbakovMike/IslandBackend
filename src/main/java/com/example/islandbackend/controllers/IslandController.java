@@ -16,13 +16,19 @@ public class IslandController {
         this.islandService = islandService;
     }
 
-    @PostMapping("/islands/{id}/info")
+    @PostMapping(
+            value = "/islands/{id}/info",
+            produces = "application/json"
+    )
     @ResponseBody
     String islandInfo(@PathVariable("id") String id) {
         return islandService.info(id);
     }
 
-    @PostMapping("/islands/{id}/summary")
+    @PostMapping(
+            value = "/islands/{id}/summary",
+            produces = "application/json"
+    )
     @ResponseBody
     String islandSummary(@PathVariable("id") String id) {
         return islandService.summary(id);

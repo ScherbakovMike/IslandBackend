@@ -5,11 +5,13 @@ import lombok.Setter;
 
 public abstract class Animal extends AbstractEntity implements Moveable {
 
-    @Getter @Setter
-    private Double satiety;
+    @Getter
+    @Setter
+    private Double satiety = 0.0;
 
-    @Getter @Setter
-    private Integer stepsWithZeroSatiety;
+    @Getter
+    @Setter
+    private Integer stepsWithZeroSatiety = 0;
 
     @Override
     public void die() {

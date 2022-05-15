@@ -19,10 +19,11 @@ public class FieldsSummaryPresentator implements ObjectPresentator {
 
     @JsonProperty("stats")
     Map<String, Long> entityStats() {
-        return island.getFields().stream()
+        Map<String, Long> result = island.getFields().stream()
                 .flatMap(Collection::stream)
                 .flatMap(field -> field.getEntities().stream())
                 .collect(Collectors.groupingBy(
                         entity -> entity.getClass().getSimpleName(), Collectors.counting()));
+        return result;
     }
 }
