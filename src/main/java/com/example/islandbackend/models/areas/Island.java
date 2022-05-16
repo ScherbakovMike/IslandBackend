@@ -7,6 +7,7 @@ import com.example.islandbackend.models.characteristics.CharacteristicsHelpers;
 import com.example.islandbackend.models.processes.Step;
 import com.example.islandbackend.threadhelpers.CallableWithArgument;
 import com.example.islandbackend.threadhelpers.CallableWithTwoArguments;
+import java.time.Instant;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +19,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Getter
 @Setter
@@ -30,10 +33,11 @@ public class Island {
     private Integer width = defaultWidth;
     private Integer height = defaultHeight;
     private Step currentStep;
-    private ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
+    private ThreadPoolExecutor executor;
     private List<Class<? extends AbstractEntity>> kindsOfEntities = CharacteristicsHelpers.kindsOfEntities();
+    private static final Logger logger = LoggerFactory.getLogger(Island.class);
 
-    public static Island newInstance() {
+    public static Island newInstance () {
         Island result = new Island();
         for (int i = 0; i < defaultHeight; i++) {
             List<Field> row = new ArrayList<>();
@@ -46,13 +50,17 @@ public class Island {
         return result;
     }
 
-    protected void populate() {
+    protected void populate () {
+        Instant now = Instant.now();
+        executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(16);
         kindsOfEntities.forEach(kind -> executeOnEachField(this::fillTheFieldByEntities, kind));
         waitResult();
+        executor.shutdown();
+        long executionTime = Instant.now().getEpochSecond() - now.getEpochSecond();
+        logger.info(this.getClass().getSimpleName() + ": populate() time: " + executionTime);
     }
 
-    private List<? extends AbstractEntity> fillTheFieldByEntities(Class<? extends AbstractEntity> kind, Field field) {
-
+    private List<? extends AbstractEntity> fillTheFieldByEntities (Class<? extends AbstractEntity> kind, Field field) {
         var defaultEntityCharacteristics = CharacteristicsHelpers.defaultCharacteristics;
         List<AbstractEntity> entitiesInField = field.getEntities();
         var entityCharacteristics = defaultEntityCharacteristics.get(kind);
@@ -63,83 +71,75 @@ public class Island {
                 entitiesInField.add(entity);
             }
         } catch (Exception e) {
+            logger.error(this.getClass().getSimpleName(), e);
             throw new RuntimeException(e);
         }
 
         return entitiesInField;
     }
 
-    private <T, V, R> List<Future<R>> executeOnEachField(BiFunction<T, V, R> function, T arg1) {
-
+    private <T, V, R> List<Future<R>> executeOnEachField (BiFunction<T, V, R> function, T arg1) {
         List<Future<R>> resultList = new ArrayList<>();
-        this.fields.forEach(fieldRow ->
-                fieldRow.forEach(field -> {
-                    CallableWithTwoArguments<T, V, R> task = new CallableWithTwoArguments(function, arg1, field);
-                    resultList.add(executor.submit(task));
-                }));
+        this.fields.forEach(fieldRow -> fieldRow.forEach(field -> {
+            CallableWithTwoArguments<T, V, R> task = new CallableWithTwoArguments(function, arg1, field);
+            resultList.add(executor.submit(task));
+        }));
         return resultList;
     }
 
-    private <T, R> List<Future<R>> executeOnEachField(Function<T, R> function) {
-
+    private <T, R> List<Future<R>> executeOnEachField (Function<T, R> function) {
         List<Future<R>> resultList = new ArrayList<>();
-        this.fields.forEach(fieldRow ->
-                fieldRow.forEach(field -> {
-                    CallableWithArgument<T, R> task = new CallableWithArgument(function, field);
-                    resultList.add(executor.submit(task));
-                }));
+        this.fields.forEach(fieldRow -> fieldRow.forEach(field -> {
+            CallableWithArgument<T, R> task = new CallableWithArgument(function, field);
+            resultList.add(executor.submit(task));
+        }));
         return resultList;
     }
 
-    private List<? extends AbstractEntity> feedAnimalsOnField(Field field) {
+    private List<? extends AbstractEntity> feedAnimalsOnField (Field field) {
         List<AbstractEntity> survivedEntities = new ArrayList<>();
 
         var defaultCharacteristics = CharacteristicsHelpers.defaultCharacteristics;
         var queuesByKind = new HashMap<Class<? extends AbstractEntity>, ConcurrentLinkedQueue<AbstractEntity>>();
         field.getEntities()
-                .stream()
-                .collect(Collectors.groupingBy(AbstractEntity::getClass))
-                .forEach((className, entityList) -> queuesByKind.put(className, new ConcurrentLinkedQueue<>(entityList)));
+             .stream()
+             .collect(Collectors.groupingBy(AbstractEntity::getClass))
+             .forEach((className, entityList) -> queuesByKind.put(className, new ConcurrentLinkedQueue<>(entityList)));
         queuesByKind.forEach((className, queueOfEntity) -> {
-            if (className != Plant.class) {
-                while (!queueOfEntity.isEmpty()) {
+            if (className == Plant.class) {
+                return;
+            }
+            while (!queueOfEntity.isEmpty()) {
 
-                    var firstRival = queueOfEntity.poll();
-                    if (firstRival == null)
-                        break;
-                    var characteristics = defaultCharacteristics.get(className);
+                var firstRival = queueOfEntity.poll();
+                if (firstRival == null) break;
+                var characteristics = defaultCharacteristics.get(className);
 
-                    if ((firstRival instanceof Animal) &&
-                            (((Animal) firstRival).getSatiety() >= characteristics.getSatiatedWeight())) {
-                        survivedEntities.add(firstRival);
-                        continue;
-                    }
-
-                    LinkedHashMap<Class<? extends AbstractEntity>, Integer> probabilityOfBeingEaten =
-                            characteristics.getProbabilityOfBeingEatenByClassName();
-                    var foundSecondRival = false;
-                    for (int i = (probabilityOfBeingEaten.size() - 1); i >= 0 && !foundSecondRival; i--) {
-                        var entry = ((Map.Entry<Class<? extends AbstractEntity>, Integer>)
-                                probabilityOfBeingEaten.entrySet().toArray()[i]);
-                        var probability = entry.getValue();
-                        if (probability > 0) {
-                            var queueOfRival = queuesByKind.get(entry.getKey());
-                            if (queueOfRival.isEmpty())
-                                continue;
-                            var secondRival = queueOfRival.poll();
-                            foundSecondRival = true;
-                            var dealth = (random.nextInt(100) + 1) <= probability;
-                            if (dealth) {
-                                survivedEntities.add(firstRival);
-                                Double currentSatiety = ((Animal) firstRival).getSatiety();
-                                Double weightSecondRival = defaultCharacteristics.get(secondRival.getClass()).getWeight();
-                                Double maxSatiety = characteristics.getSatiatedWeight();
-                                ((Animal) firstRival).setSatiety(
-                                        (currentSatiety + weightSecondRival) > maxSatiety
-                                                ? maxSatiety : (currentSatiety + weightSecondRival)
-                                );
-                                secondRival.die();
-                            }
+                if ((firstRival instanceof Animal) && (((Animal) firstRival).getSatiety() >= characteristics.getSatiatedWeight())) {
+                    survivedEntities.add(firstRival);
+                    continue;
+                }
+                LinkedHashMap<Class<? extends AbstractEntity>, Integer> probabilityOfBeingEaten = characteristics.getProbabilityOfBeingEatenByClassName();
+                var foundSecondRival = false;
+                for (int i = (probabilityOfBeingEaten.size() - 1); i >= 0 && !foundSecondRival; i--) {
+                    var entry = ((Map.Entry<Class<? extends AbstractEntity>, Integer>) probabilityOfBeingEaten.entrySet()
+                                                                                                              .toArray()[i]);
+                    var probability = entry.getValue();
+                    if (probability > 0) {
+                        var queueOfRival = queuesByKind.get(entry.getKey());
+                        if (queueOfRival.isEmpty()) continue;
+                        var secondRival = queueOfRival.poll();
+                        foundSecondRival = true;
+                        var dealth = (random.nextInt(100) + 1) <= probability;
+                        if (dealth) {
+                            survivedEntities.add(firstRival);
+                            Double currentSatiety = ((Animal) firstRival).getSatiety();
+                            Double weightSecondRival = defaultCharacteristics.get(secondRival.getClass()).getWeight();
+                            Double maxSatiety = characteristics.getSatiatedWeight();
+                            ((Animal) firstRival).setSatiety((currentSatiety + weightSecondRival) > maxSatiety
+                                ? maxSatiety
+                                : (currentSatiety + weightSecondRival));
+                            secondRival.die();
                         }
                     }
                 }
@@ -154,28 +154,97 @@ public class Island {
         return field.getEntities();
     }
 
-    protected void reproduce() {
+    private List<? extends AbstractEntity> reduceSatietyOnField (Field field) {
+        List<AbstractEntity> entitiesForRemove = new ArrayList<>();
+        var defaultCharacteristics = CharacteristicsHelpers.defaultCharacteristics;
 
+        field.getEntities().forEach(entity -> {
+            if (entity instanceof Plant) return;
+
+            var characteristics = defaultCharacteristics.get(entity.getClass());
+            var animal = (Animal) entity;
+            var currentSatiety = animal.getSatiety();
+            var stepsWithZeroSatiety = animal.getStepsWithZeroSatiety();
+            var movesForSurvival = characteristics.getMovesForSurvival();
+            var satiatedWeight = characteristics.getSatiatedWeight();
+            var satietyDecreasePerStepPercent = characteristics.getSatietyDecreasePerStepPercent().doubleValue();
+            if (currentSatiety == 0) {
+                animal.setStepsWithZeroSatiety(stepsWithZeroSatiety + 1);
+                if (movesForSurvival <= animal.getStepsWithZeroSatiety()) {
+                    animal.die();
+                    entitiesForRemove.add(animal);
+                }
+            } else {
+                var newSatiety = Math.max(0, currentSatiety - satiatedWeight * satietyDecreasePerStepPercent / 100.0);
+                animal.setSatiety(newSatiety);
+            }
+        });
+
+        entitiesForRemove.forEach(entity -> field.getEntities().remove(entity));
+        return entitiesForRemove;
     }
 
-    public void feed() {
+    private List<? extends AbstractEntity> reproduceOnField (Field field) {
+        List<AbstractEntity> newEntities = new ArrayList<>();
+
+        var defaultCharacteristics = CharacteristicsHelpers.defaultCharacteristics;
+        var queuesByKind = new HashMap<Class<? extends AbstractEntity>, ConcurrentLinkedQueue<AbstractEntity>>();
+        field.getEntities()
+             .stream()
+             .collect(Collectors.groupingBy(AbstractEntity::getClass))
+             .forEach((className, entityList) -> queuesByKind.put(className, new ConcurrentLinkedQueue<>(entityList)));
+        queuesByKind.forEach((className, queueOfEntity) -> {
+            while (!queueOfEntity.isEmpty()) {
+                var potentialProducer = queueOfEntity.poll();
+                if (potentialProducer == null) break;
+                var characteristics = defaultCharacteristics.get(className);
+
+            }
+
+        });
+
+        field.getEntities().addAll(newEntities);
+        return field.getEntities();
+    }
+
+    public void reduceSatiety () {
+        Instant now = Instant.now();
+        executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(16);
+        executeOnEachField(this::reduceSatietyOnField);
+        waitResult();
+        long executionTime = Instant.now().getEpochSecond() - now.getEpochSecond();
+        logger.info(this.getClass().getSimpleName() + ": reduceSatiety() time: " + executionTime);
+    }
+
+    protected void reproduce () {
+        Instant now = Instant.now();
+        executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(16);
+        executeOnEachField(this::reproduceOnField);
+        waitResult();
+        long executionTime = Instant.now().getEpochSecond() - now.getEpochSecond();
+        logger.info(this.getClass().getSimpleName() + ": reduceSatiety() time: " + executionTime);
+    }
+
+    public void feed () {
+        Instant now = Instant.now();
+        executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(16);
         executeOnEachField(this::feedAnimalsOnField);
         waitResult();
+        long executionTime = Instant.now().getEpochSecond() - now.getEpochSecond();
+        logger.info(this.getClass().getSimpleName() + ": populate() time: " + executionTime);
     }
 
-    private void waitResult() {
+    private void waitResult () {
         while ((executor.getTaskCount() - executor.getCompletedTaskCount()) > 0) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-
+                logger.error(this.getClass().getSimpleName(), e);
             }
         }
     }
 
-    protected void move() {
+    protected void move () {
 
     }
-
-
 }
