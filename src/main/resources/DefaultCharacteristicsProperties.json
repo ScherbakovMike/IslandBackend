@@ -7,7 +7,7 @@
     "movementSpeed": 3,
     "satiatedWeight": 8,
     "movesForSurvival": 10,
-    "probabilityOfReprodaction": 30,
+    "probabilityOfReproduction": 30,
     "countOfCubs": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
@@ -84,7 +84,7 @@
     "movementSpeed": 1,
     "satiatedWeight": 0.3,
     "movesForSurvival": 15,
-    "probabilityOfReprodaction": 30,
+    "probabilityOfReproduction": 30,
     "countOfCubs": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
@@ -161,7 +161,7 @@
     "movementSpeed": 3,
     "satiatedWeight": 1,
     "movesForSurvival": 8,
-    "probabilityOfReprodaction": 30,
+    "probabilityOfReproduction": 30,
     "countOfCubs": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
@@ -238,7 +238,7 @@
     "movementSpeed": 2,
     "satiatedWeight": 38,
     "movesForSurvival": 15,
-    "probabilityOfReprodaction": 30,
+    "probabilityOfReproduction": 30,
     "countOfCubs": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
@@ -315,7 +315,7 @@
     "movementSpeed": 4,
     "satiatedWeight": 1,
     "movesForSurvival": 5,
-    "probabilityOfReprodaction": 30,
+    "probabilityOfReproduction": 30,
     "countOfCubs": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
@@ -392,7 +392,7 @@
     "movementSpeed": 3,
     "satiatedWeight": 45,
     "movesForSurvival": 5,
-    "probabilityOfReprodaction": 30,
+    "probabilityOfReproduction": 30,
     "countOfCubs": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
@@ -469,7 +469,7 @@
     "movementSpeed": 3,
     "satiatedWeight": 26,
     "movesForSurvival": 4,
-    "probabilityOfReprodaction": 30,
+    "probabilityOfReproduction": 30,
     "countOfCubs": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
@@ -542,10 +542,12 @@
     "satietyDecreasePerStepPercent": 30,
     "simpleClassName": "Hare.class",
     "weight": 3,
-    "maxOnTheCell": 750,
+    "maxOnTheCell": 100,
     "movementSpeed": 3,
     "satiatedWeight": 0.45,
     "movesForSurvival": 7,
+    "probabilityOfReproduction": 30,
+    "countOfCubs": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
         "simpleClassName": "Wolf.class",
@@ -617,10 +619,12 @@
     "satietyDecreasePerStepPercent": 30,
     "simpleClassName": "Hamster.class",
     "weight": 0.03,
-    "maxOnTheCell": 10000,
+    "maxOnTheCell": 100,
     "movementSpeed": 1,
     "satiatedWeight": 0.0075,
     "movesForSurvival": 3,
+    "probabilityOfReproduction": 30,
+    "countOfCubs": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
         "simpleClassName": "Wolf.class",
@@ -696,7 +700,7 @@
     "movementSpeed": 1,
     "satiatedWeight": 10,
     "movesForSurvival": 5,
-    "probabilityOfReprodaction": 30,
+    "probabilityOfReproduction": 30,
     "countOfCubs": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
@@ -773,7 +777,7 @@
     "movementSpeed": 1,
     "satiatedWeight": 7,
     "movesForSurvival": 5,
-    "probabilityOfReprodaction": 30,
+    "probabilityOfReproduction": 30,
     "countOfCubs": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
@@ -850,7 +854,7 @@
     "movementSpeed": 2,
     "satiatedWeight": 7,
     "movesForSurvival": 8,
-    "probabilityOfReprodaction": 30,
+    "probabilityOfReproduction": 30,
     "countOfCubs": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
@@ -927,7 +931,7 @@
     "movementSpeed": 1,
     "satiatedWeight": 53,
     "movesForSurvival": 4,
-    "probabilityOfReprodaction": 30,
+    "probabilityOfReproduction": 30,
     "countOfCubs": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
@@ -1000,11 +1004,11 @@
     "satietyDecreasePerStepPercent": 30,
     "simpleClassName": "Duck.class",
     "weight": 1,
-    "maxOnTheCell": 500,
+    "maxOnTheCell": 100,
     "movementSpeed": 1,
     "satiatedWeight": 0.15,
     "movesForSurvival": 4,
-    "probabilityOfReprodaction": 30,
+    "probabilityOfReproduction": 30,
     "countOfCubs": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
@@ -1077,11 +1081,11 @@
     "satietyDecreasePerStepPercent": 30,
     "simpleClassName": "Caterpillar.class",
     "weight": 0.01,
-    "maxOnTheCell": 10000,
+    "maxOnTheCell": 200,
     "movementSpeed": 1,
     "satiatedWeight": 0.0025,
     "movesForSurvival": 1,
-    "probabilityOfReprodaction": 30,
+    "probabilityOfReproduction": 30,
     "countOfCubs": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {
@@ -1154,11 +1158,11 @@
     "satietyDecreasePerStepPercent": 30,
     "simpleClassName": "Plant.class",
     "weight": 1,
-    "maxOnTheCell": 10000,
+    "maxOnTheCell": 1000,
     "movementSpeed": 0,
     "satiatedWeight": 0,
     "movesForSurvival": 0,
-    "probabilityOfReprodaction": 30,
+    "probabilityOfReproduction": 30,
     "countOfCubs": 1,
     "probabilityOfBeingEatenBySimpleClassName": [
       {

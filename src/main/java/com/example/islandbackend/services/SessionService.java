@@ -20,17 +20,15 @@ public class SessionService {
 
     private static final Logger logger = LoggerFactory.getLogger(SessionService.class);
     private final StepService stepService;
-    private final IslandService islandService;
     private final SessionDispatcher sessionDispatcher;
 
     @Autowired
     public SessionService(StepService stepService,
                           SessionDispatcher sessionDispatcher,
-                          ApplicationContext context, IslandService islandService) {
+                          ApplicationContext context) {
         this.context = context;
         this.sessionDispatcher = sessionDispatcher;
         this.stepService = stepService;
-        this.islandService = islandService;
     }
 
     public String init() {
@@ -58,8 +56,12 @@ public class SessionService {
         Step currentStep = session.getCurrentStep();
         Integer currentStepNumber = currentStep.getStepNumber();
         Island currentIslandState = currentStep.getIslandState();
-        currentIslandState.feed();
 
+        currentIslandState.feed();
+        currentIslandState.reduceSatiety();
+        currentIslandState.reproduce();
+        currentIslandState.move();
+        
         Step nextStep = new Step();
         nextStep.setSession(session);
         nextStep.setStepNumber(currentStepNumber + 1);
