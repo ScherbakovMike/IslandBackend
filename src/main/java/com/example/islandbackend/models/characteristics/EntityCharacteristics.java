@@ -22,6 +22,8 @@ public class EntityCharacteristics {
     private Double satiatedWeight;
     private Integer movesForSurvival;
     private Integer satietyDecreasePerStepPercent;
+    private Integer probabilityOfReprodaction;
+    private Integer countOfCubs;
     private LinkedHashMap<Class<? extends AbstractEntity>, Integer> probabilityOfBeingEatenByClassName = new LinkedHashMap<>();
     private LinkedHashMap<String, Integer> probabilityOfBeingEatenBySimpleClassName = new LinkedHashMap<>();
 

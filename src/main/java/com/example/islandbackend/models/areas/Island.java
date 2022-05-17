@@ -8,6 +8,8 @@ import com.example.islandbackend.models.processes.Step;
 import com.example.islandbackend.threadhelpers.CallableWithArgument;
 import com.example.islandbackend.threadhelpers.CallableWithTwoArguments;
 import java.time.Instant;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListSet;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,6 +27,18 @@ import org.slf4j.LoggerFactory;
 @Getter
 @Setter
 public class Island {
+
+    @Getter
+    @Setter
+    private class Position {
+        private int x = 0;
+        private int y = 0;
+
+        public Position (int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
     private static Integer defaultWidth = 20;
     private static Integer defaultHeight = 40;
     private static Random random = new Random();
@@ -36,6 +50,7 @@ public class Island {
     private ThreadPoolExecutor executor;
     private List<Class<? extends AbstractEntity>> kindsOfEntities = CharacteristicsHelpers.kindsOfEntities();
     private static final Logger logger = LoggerFactory.getLogger(Island.class);
+    private ConcurrentHashMap<AbstractEntity, Boolean> movedElements = new ConcurrentHashMap<>();
 
     public static Island newInstance () {
         Island result = new Island();
@@ -115,8 +130,8 @@ public class Island {
                 if (firstRival == null) break;
                 var characteristics = defaultCharacteristics.get(className);
 
-                if ((firstRival instanceof Animal) && (((Animal) firstRival).getSatiety() >= characteristics.getSatiatedWeight())) {
-                    survivedEntities.add(firstRival);
+                if ((firstRival instanceof Animal animal) && (((Animal) firstRival).getSatiety() >= characteristics.getSatiatedWeight())) {
+                    survivedEntities.add(animal);
                     continue;
                 }
                 LinkedHashMap<Class<? extends AbstractEntity>, Integer> probabilityOfBeingEaten = characteristics.getProbabilityOfBeingEatenByClassName();
@@ -184,27 +199,32 @@ public class Island {
         return entitiesForRemove;
     }
 
-    private List<? extends AbstractEntity> reproduceOnField (Field field) {
+    private List<? extends AbstractEntity> reproduceOnField(Field field)  {
         List<AbstractEntity> newEntities = new ArrayList<>();
 
         var defaultCharacteristics = CharacteristicsHelpers.defaultCharacteristics;
-        var queuesByKind = new HashMap<Class<? extends AbstractEntity>, ConcurrentLinkedQueue<AbstractEntity>>();
-        field.getEntities()
+        var listsByKind = field.getEntities()
              .stream()
-             .collect(Collectors.groupingBy(AbstractEntity::getClass))
-             .forEach((className, entityList) -> queuesByKind.put(className, new ConcurrentLinkedQueue<>(entityList)));
-        queuesByKind.forEach((className, queueOfEntity) -> {
-            while (!queueOfEntity.isEmpty()) {
-                var potentialProducer = queueOfEntity.poll();
-                if (potentialProducer == null) break;
+             .collect(Collectors.groupingBy(AbstractEntity::getClass));
+        listsByKind.forEach((className, listOfEntity) -> {
                 var characteristics = defaultCharacteristics.get(className);
-
-            }
-
+                var probabilityOfReproduction = characteristics.getProbabilityOfReprodaction();
+                var countOfCubs = characteristics.getCountOfCubs();
+                var countOfNewEntitiesProbable = Math.round(countOfCubs.doubleValue()*probabilityOfReproduction.doubleValue()/100.0);
+                var maxCountOfEntitiesOnFieldByKind = characteristics.getMaxOnTheCell();
+                var countOfNewEntities = Math.min(countOfNewEntitiesProbable, maxCountOfEntitiesOnFieldByKind);
+                for(int i=0;i<countOfNewEntities;i++) {
+                    try {
+                        newEntities.add(className.getDeclaredConstructor().newInstance());
+                    } catch (Exception e) {
+                        logger.error(this.getClass().getSimpleName(), e);
+                        throw new RuntimeException(e);
+                    }
+                }
         });
 
         field.getEntities().addAll(newEntities);
-        return field.getEntities();
+        return newEntities;
     }
 
     public void reduceSatiety () {
@@ -245,6 +265,99 @@ public class Island {
     }
 
     protected void move () {
+        Instant now = Instant.now();
+        executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(16);
+        this.movedElements.clear();
+        executeOnEachField(this::moveAnimalsByField);
+        waitResult();
+        long executionTime = Instant.now().getEpochSecond() - now.getEpochSecond();
+        logger.info(this.getClass().getSimpleName() + ": populate() time: " + executionTime);
+    }
 
+    private Position getFieldPosition(Field field) {
+        for(int row=0; row<this.fields.size();row++){
+            for(int col=0; col<this.fields.get(row).size();col++) {
+                if(this.fields.get(row).get(col)==field) {
+                    return new Position(row, col);
+                }
+            }
+        }
+        return null;
+    }
+
+    private Field getFieldByPosition(Position position) {
+        if(position.x<0 || position.x>=this.fields.size())
+            return null;
+        if(position.y<0 || position.y>=this.fields.get(0).size())
+            return null;
+
+        return this.fields.get(position.x).get(position.y);
+    }
+
+    private long countAnimalsOnFieldByKind(Field field, Class<? extends AbstractEntity> kind) {
+        return field.getEntities().stream().filter(entity->entity.getClass()==kind).count();
+    }
+
+
+    private Field getAvailableFieldForMoving(Field sourceField, Class<? extends AbstractEntity> kind) {
+        var defaultCharacteristics = CharacteristicsHelpers.defaultCharacteristics;
+        var characteristics = defaultCharacteristics.get(kind);
+        var maxRadius = characteristics.getMovesForSurvival();
+        var maxOnTheCell = characteristics.getMaxOnTheCell();
+        int radius = 1;
+        while(radius<=maxRadius) {
+            Position curPosition = getFieldPosition(sourceField);
+            List<Field> variants = new ArrayList<>();
+            Field fieldVariant = getFieldByPosition(new Position(curPosition.x-radius, curPosition.y));
+            if(fieldVariant!=null){
+                variants.add(fieldVariant);
+            }
+            fieldVariant = getFieldByPosition(new Position(curPosition.x+radius, curPosition.y));
+            if(fieldVariant!=null){
+                variants.add(fieldVariant);
+            }
+            fieldVariant = getFieldByPosition(new Position(curPosition.x, curPosition.y-radius));
+            if(fieldVariant!=null){
+                variants.add(fieldVariant);
+            }
+            fieldVariant = getFieldByPosition(new Position(curPosition.x, curPosition.y+radius));
+            if(fieldVariant!=null){
+                variants.add(fieldVariant);
+            }
+            Collections.shuffle(variants);
+            if(!variants.isEmpty()){
+                for (Field field : variants) {
+                    if ((countAnimalsOnFieldByKind(field, kind) + 1) <= maxOnTheCell) {
+                        return field;
+                    }
+                }
+            }
+            radius++;
+        }
+        return null;
+    }
+
+    private List<? extends AbstractEntity> moveAnimalsByField (Field field) {
+        var defaultCharacteristics = CharacteristicsHelpers.defaultCharacteristics;
+        var listsByKind = field.getEntities()
+                               .stream()
+                               .collect(Collectors.groupingBy(AbstractEntity::getClass));
+        listsByKind.forEach((kind, listOfEntity) -> {
+            listOfEntity.forEach((entity) ->
+            {
+                if(movedElements.containsKey(entity)) {
+                    return;
+                }
+                Field fieldToMove = getAvailableFieldForMoving(field, kind);
+                if(fieldToMove==null) {
+                    return;
+                }
+                field.getEntities().remove(entity);
+                fieldToMove.getEntities().add(entity);
+                movedElements.put(entity, true);
+            });
+
+        });
+        return Collections.emptyList();
     }
 }
