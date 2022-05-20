@@ -1,21 +1,14 @@
 package com.example.islandbackend.presentators;
 
 import com.example.islandbackend.models.processes.Session;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.RequiredArgsConstructor;
 
 import java.text.DateFormat;
 
-@RequiredArgsConstructor
-public class SessionPresentator implements ObjectPresentator {
+public class SessionPresentator extends BasePresentator {
 
-    @JsonIgnore
-    private final Session session;
-
-    @JsonProperty("id")
-    String getId() {
-        return session.getId();
+    public SessionPresentator(Session session) {
+        super(session);
     }
 
     @JsonProperty("startTime")
@@ -34,7 +27,7 @@ public class SessionPresentator implements ObjectPresentator {
         }
     }
 
-    @JsonProperty("currentStep")
+    @JsonProperty("stepId")
     String getCurrentStepId() {
         return session.getCurrentStep().getId();
     }

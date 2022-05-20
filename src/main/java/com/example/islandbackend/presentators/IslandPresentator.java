@@ -1,21 +1,20 @@
 package com.example.islandbackend.presentators;
 
 import com.example.islandbackend.models.areas.Island;
-import com.example.islandbackend.models.processes.Session;
 import com.example.islandbackend.models.processes.Step;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class IslandPresentator implements ObjectPresentator {
+public class IslandPresentator extends BasePresentator {
 
     @JsonIgnore
     private final Step step;
-    @JsonIgnore
-    private final Session session;
+
     @JsonIgnore
     Island island;
 
     public IslandPresentator(Island island) {
+        super(island.getCurrentStep().getSession());
         this.island = island;
         this.step = island.getCurrentStep();
         this.session = island.getCurrentStep().getSession();

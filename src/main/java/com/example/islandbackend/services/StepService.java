@@ -28,6 +28,6 @@ public class StepService {
 
     public String info(String stepId) {
         Step step = sessionDispatcher.getStepById(stepId);
-        return JsonBodyGenerator.build(new StepPresentator(step, step.getSession()));
+        return JsonBodyGenerator.build(new StepPresentator(step));
     }
 }

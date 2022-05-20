@@ -12,7 +12,7 @@ public class JsonBodyGenerator {
     private JsonBodyGenerator() {
     }
 
-    public static String build(ObjectPresentator presentator) {
+    public static String build(BasePresentator presentator) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             return objectMapper.writeValueAsString(presentator);

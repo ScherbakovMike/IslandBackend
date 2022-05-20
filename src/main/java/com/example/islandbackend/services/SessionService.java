@@ -69,6 +69,6 @@ public class SessionService {
         nextStep.getIslandState().setCurrentStep(nextStep);
         session.setCurrentStep(nextStep);
 
-        return JsonBodyGenerator.build(new StepPresentator(nextStep, nextStep.getSession()));
+        return JsonBodyGenerator.build(new StepPresentator(nextStep));
     }
 }
