@@ -35,7 +35,7 @@ class SessionController {
     }
 
     @PostMapping(
-            value = "/sessions/{id}/next",
+            value = "/sessions/{id}/nextstep",
             produces = "application/json"
     )
     @ResponseBody

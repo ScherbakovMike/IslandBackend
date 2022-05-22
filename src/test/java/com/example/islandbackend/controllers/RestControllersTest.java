@@ -115,7 +115,7 @@ class RestControllersTest {
         @Test
         @DisplayName("Next step")
         void sessionNextStep() throws Exception {
-            MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post("/sessions/" + sessionId + "/next")
+            MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post("/sessions/" + sessionId + "/nextstep")
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk())
                     .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
