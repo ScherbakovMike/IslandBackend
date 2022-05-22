@@ -99,3 +99,15 @@ _- mgo to the next step:_
 /sessions/{sessionId}/nextstep
 
 5. Each method on rest-services has a unit test written using JUnit 5.
+
+Also, you can test the services using curl scripts or Postman. 
+
+Curl script are located in the directory "/scripts/*" (don't forget to change the id's in the files!).
+
+**Contact developer:**
+
+Mike Scherbakov
+
+[scherbakov.mike@gmail.com]()
+
++7-916-530-3619
