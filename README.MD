@@ -86,6 +86,7 @@ There are 6 methods of rest controllers:
 2. Entity characteristics are stored in the resource file "_DefaultCharacteristicsProperties.json_" and are loaded automatically on start the application.
 3. Each session can contain many steps. Each step contains only one island state. Each island state contains the fields. Each field contains list of different entities.
 4. **For the game play you should:**
+
 _- call the initialization service:_ 
 
 /sessions/init  
