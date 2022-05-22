@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class StepService {
     private final SessionDispatcher sessionDispatcher;
-
     private final ApplicationContext context;
 
     @Autowired

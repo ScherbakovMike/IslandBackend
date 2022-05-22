@@ -11,7 +11,7 @@ public class IslandPresentator extends BasePresentator {
     private final Step step;
 
     @JsonIgnore
-    Island island;
+    private final Island island;
 
     public IslandPresentator(Island island) {
         super(island.getCurrentStep().getSession());

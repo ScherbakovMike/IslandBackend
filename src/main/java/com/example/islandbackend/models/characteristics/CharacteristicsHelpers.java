@@ -15,9 +15,9 @@ import java.util.stream.Collectors;
 
 public class CharacteristicsHelpers {
 
-    private static final String defaultCharacteristicsPropertiesFileName = "DefaultCharacteristicsProperties.json";
+    private static final String DEFAULT_CHARACTERISTICS_PROPERTIES_FILE_NAME = "DefaultCharacteristicsProperties.json";
     private static final Logger logger = LoggerFactory.getLogger(CharacteristicsHelpers.class);
-    public static final Map<Class<? extends AbstractEntity>, EntityCharacteristics> defaultCharacteristics =
+    public static final Map<Class<? extends AbstractEntity>, EntityCharacteristics> DEFAULT_CHARACTERISTICS =
             loadDefaultEntityCharacteristicsFromFiles();
 
     private CharacteristicsHelpers() {
@@ -44,7 +44,7 @@ public class CharacteristicsHelpers {
 
     public static Map<Class<? extends AbstractEntity>, EntityCharacteristics> loadDefaultEntityCharacteristicsFromFiles() {
         File fileOfProperties = new File(Objects.requireNonNull(
-                        CharacteristicsHelpers.class.getClassLoader().getResource(defaultCharacteristicsPropertiesFileName))
+                        CharacteristicsHelpers.class.getClassLoader().getResource(DEFAULT_CHARACTERISTICS_PROPERTIES_FILE_NAME))
                 .getFile());
         ObjectMapper mapper = new ObjectMapper();
 

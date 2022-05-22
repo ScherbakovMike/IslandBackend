@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StepController {
     private final StepService stepService;
-
     @Autowired
     public StepController(StepService stepService) {
         this.stepService = stepService;

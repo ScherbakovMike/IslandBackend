@@ -12,14 +12,4 @@ public abstract class Animal extends AbstractEntity implements Moveable {
     @Getter
     @Setter
     private Integer stepsWithZeroSatiety = 0;
-
-    @Override
-    public void move() {
-
-    }
-
-    @Override
-    public void reproduce() {
-
-    }
 }

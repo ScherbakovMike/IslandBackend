@@ -13,7 +13,7 @@ public class SessionPresentator extends BasePresentator {
 
     @JsonProperty("startTime")
     String getStartTime() {
-        DateFormat dateFormat = StringFormats.DATETIME;
+        DateFormat dateFormat = StringFormats.DATE_FORMAT;
         return dateFormat.format(session.getStartTime());
     }
 
@@ -22,7 +22,7 @@ public class SessionPresentator extends BasePresentator {
         if (session.getEndTime() == null)
             return "";
         else {
-            DateFormat dateFormat = StringFormats.DATETIME;
+            DateFormat dateFormat = StringFormats.DATE_FORMAT;
             return dateFormat.format(session.getEndTime());
         }
     }

@@ -16,7 +16,7 @@ public class CallableWithTwoArguments<T, V, R> implements Callable<R> {
     }
 
     @Override
-    public R call() throws Exception {
+    public R call() {
         return biFunction.apply(arg1, arg2);
     }
 }

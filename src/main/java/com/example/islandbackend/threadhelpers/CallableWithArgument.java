@@ -14,7 +14,7 @@ public class CallableWithArgument<T, R> implements Callable<R> {
     }
 
     @Override
-    public R call() throws Exception {
+    public R call() {
         return function.apply(arg1);
     }
 }

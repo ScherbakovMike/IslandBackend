@@ -31,11 +31,15 @@ public class EntityCharacteristics {
     private Class<? extends AbstractEntity> className;
 
     public void setProbabilityOfBeingEatenBySimpleClassName(Object probabilityOfBeingEatenBySimpleClassName) {
-        List<Map<String, Object>> probabilityOfBeingEatenByClassNameDto =
-                (List<Map<String, Object>>) probabilityOfBeingEatenBySimpleClassName;
-        probabilityOfBeingEatenByClassNameDto.forEach(dto ->
-                this.probabilityOfBeingEatenBySimpleClassName.put(
-                        dto.get("simpleClassName").toString(), (Integer) dto.get("probability")
-                ));
+        try {
+            List<Map<String, Object>> probabilityOfBeingEatenByClassNameDto =
+                    (List<Map<String, Object>>) probabilityOfBeingEatenBySimpleClassName;
+            probabilityOfBeingEatenByClassNameDto.forEach(dto ->
+                    this.probabilityOfBeingEatenBySimpleClassName.put(
+                            dto.get("simpleClassName").toString(), (Integer) dto.get("probability")
+                    ));
+        } catch (ClassCastException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

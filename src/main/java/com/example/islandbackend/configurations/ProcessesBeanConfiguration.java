@@ -4,7 +4,6 @@ import com.example.islandbackend.models.areas.Island;
 import com.example.islandbackend.models.processes.Session;
 import com.example.islandbackend.models.processes.SessionDispatcher;
 import com.example.islandbackend.models.processes.Step;
-import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -12,8 +11,10 @@ import org.springframework.context.annotation.Scope;
 import java.util.Date;
 
 @Configuration
-@NoArgsConstructor
 public class ProcessesBeanConfiguration {
+    public ProcessesBeanConfiguration() {
+    }
+
     @Bean(name = "SessionDispatcher")
     @Scope("singleton")
     public static SessionDispatcher createSessionDispatcher() {

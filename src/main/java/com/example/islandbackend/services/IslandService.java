@@ -6,7 +6,6 @@ import com.example.islandbackend.presentators.FieldsSummaryPresentator;
 import com.example.islandbackend.presentators.IslandPresentator;
 import com.example.islandbackend.presentators.JsonBodyGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,8 +13,7 @@ public class IslandService {
     private final SessionDispatcher sessionDispatcher;
 
     @Autowired
-    public IslandService(ApplicationContext context,
-                         SessionDispatcher sessionDispatcher) {
+    public IslandService(SessionDispatcher sessionDispatcher) {
         this.sessionDispatcher = sessionDispatcher;
     }
 

@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public abstract class BasePresentator {
-
     @JsonIgnore
     protected Session session;
 
-    public BasePresentator(Session session) {
+    protected BasePresentator(Session session) {
         this.session = session;
     }
 

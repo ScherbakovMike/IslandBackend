@@ -16,8 +16,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.Map;
 
-import static com.example.islandbackend.models.characteristics.IslandCharacteristics.defaultHeight;
-import static com.example.islandbackend.models.characteristics.IslandCharacteristics.defaultWidth;
+import static com.example.islandbackend.models.characteristics.IslandCharacteristics.DEFAULT_HEIGHT;
+import static com.example.islandbackend.models.characteristics.IslandCharacteristics.DEFAULT_WIDTH;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -40,10 +40,6 @@ class RestControllersTest {
     private static String sessionId;
     private static String stepId;
     private static String islandId;
-
-    @BeforeEach
-    void setUp() {
-    }
 
     @Nested
     @DisplayName("Session")
@@ -104,7 +100,7 @@ class RestControllersTest {
         @Order(1)
         @DisplayName("Step info")
         void stepInfo() throws Exception {
-            MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post("/steps/" + stepId + "/info")
+            mvc.perform(MockMvcRequestBuilders.post("/steps/" + stepId + "/info")
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk())
                     .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -143,7 +139,7 @@ class RestControllersTest {
         @Test
         @DisplayName("Island info")
         void islandInfo() throws Exception {
-            MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post("/islands/" + islandId + "/info")
+            mvc.perform(MockMvcRequestBuilders.post("/islands/" + islandId + "/info")
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk())
                     .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -165,7 +161,7 @@ class RestControllersTest {
                     .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                     .andReturn();
             Map<String, Map<String, Long>> changes = JsonPath.read(mvcResult.getResponse().getContentAsString(), "$.stats");
-            Assertions.assertEquals(changes.size(), defaultWidth * defaultHeight);
+            Assertions.assertEquals(changes.size(), DEFAULT_WIDTH * DEFAULT_HEIGHT);
         }
     }
 }
