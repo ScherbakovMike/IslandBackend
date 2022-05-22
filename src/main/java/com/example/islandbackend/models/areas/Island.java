@@ -2,6 +2,7 @@ package com.example.islandbackend.models.areas;
 
 import com.example.islandbackend.models.animals.AbstractEntity;
 import com.example.islandbackend.models.animals.Animal;
+import com.example.islandbackend.models.animals.Reproducible;
 import com.example.islandbackend.models.animals.plants.Plant;
 import com.example.islandbackend.models.characteristics.CharacteristicsHelpers;
 import com.example.islandbackend.models.characteristics.EntityCharacteristics;
@@ -311,7 +312,7 @@ public class Island {
             var countOfNewEntities = Math.min(countOfNewEntitiesProbable, maxCountOfEntitiesOnFieldByKind);
             for (int i = 0; i < countOfNewEntities; i++) {
                 try {
-                    newEntities.add(className.getDeclaredConstructor().newInstance());
+                    newEntities.add(Reproducible.reproduce(className));
                 } catch (Exception e) {
                     logger.error(this.getClass().getSimpleName(), e);
                     throw new RuntimeException(e);
@@ -393,9 +394,11 @@ public class Island {
             if (fieldToMove == null) {
                 return;
             }
-            field.getEntities().remove(entity);
-            fieldToMove.getEntities().add(entity);
-            movedElements.put(entity, true);
+
+            if(entity instanceof Animal animal) {
+                animal.move(field, fieldToMove);
+                movedElements.put(entity, true);
+            }
         }));
         return Collections.emptyList();
     }
