@@ -5,8 +5,11 @@ import com.example.islandbackend.models.animals.Animal;
 import com.example.islandbackend.models.animals.plants.Plant;
 import com.example.islandbackend.models.characteristics.CharacteristicsHelpers;
 import com.example.islandbackend.models.processes.Step;
+import com.example.islandbackend.presentators.JsonBodyGenerator;
 import com.example.islandbackend.threadhelpers.CallableWithArgument;
 import com.example.islandbackend.threadhelpers.CallableWithTwoArguments;
+import com.google.common.collect.MapDifference;
+import com.google.common.collect.Maps;
 import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;
@@ -19,14 +22,14 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static com.example.islandbackend.models.characteristics.IslandCharacteristics.defaultHeight;
+import static com.example.islandbackend.models.characteristics.IslandCharacteristics.defaultWidth;
+
 @Getter
 @Setter
 public class Island {
 
     private ExecutorService executor;
-
-    private static Integer defaultWidth = 20;
-    private static Integer defaultHeight = 40;
     private static Random random = new Random();
     private final List<List<Field>> fields = new ArrayList<>();
     private String id = UUID.randomUUID().toString();
@@ -39,7 +42,7 @@ public class Island {
         for (int i = 0; i < defaultHeight; i++) {
             List<Field> row = new ArrayList<>();
             for (int j = 0; j < defaultWidth; j++) {
-                row.add(Field.newInstance());
+                row.add(Field.newInstance(new Position(j, i)));
             }
             result.fields.add(row);
         }
@@ -74,7 +77,8 @@ public class Island {
         waitResult();
         executor.shutdown();
         long executionTime = Instant.now().getEpochSecond() - now.getEpochSecond();
-        logger.info(this.getClass().getSimpleName() + ": populate() time: " + executionTime);
+        String eventName = String.format("%s: populate() time: %d s", this.getClass().getSimpleName(), executionTime);
+        logger.info(eventName);
     }
 
     public void reduceSatiety() {
@@ -84,7 +88,8 @@ public class Island {
         waitResult();
         executor.shutdown();
         long executionTime = Instant.now().getEpochSecond() - now.getEpochSecond();
-        logger.info(this.getClass().getSimpleName() + ": reduceSatiety() time: " + executionTime);
+        String eventName = String.format("%s: reduceSatiety() time: %d s", this.getClass().getSimpleName(), executionTime);
+        logger.info(eventName);
     }
 
     public void reproduce() {
@@ -94,7 +99,8 @@ public class Island {
         waitResult();
         executor.shutdown();
         long executionTime = Instant.now().getEpochSecond() - now.getEpochSecond();
-        logger.info(this.getClass().getSimpleName() + ": reduceSatiety() time: " + executionTime);
+        String eventName = String.format("%s: reproduce() time: %d s", this.getClass().getSimpleName(), executionTime);
+        logger.info(eventName);
     }
 
     public void feed() {
@@ -104,7 +110,8 @@ public class Island {
         waitResult();
         executor.shutdown();
         long executionTime = Instant.now().getEpochSecond() - now.getEpochSecond();
-        logger.info(this.getClass().getSimpleName() + ": populate() time: " + executionTime);
+        String eventName = String.format("%s: feed() time: %d s", this.getClass().getSimpleName(), executionTime);
+        logger.info(eventName);
     }
 
     public void move() {
@@ -115,7 +122,8 @@ public class Island {
         waitResult();
         executor.shutdown();
         long executionTime = Instant.now().getEpochSecond() - now.getEpochSecond();
-        logger.info(this.getClass().getSimpleName() + ": populate() time: " + executionTime);
+        String eventName = String.format("%s: move() time: %d s", this.getClass().getSimpleName(), executionTime);
+        logger.info(eventName);
     }
 
     private List<? extends AbstractEntity> fillTheFieldByEntities(Class<? extends AbstractEntity> kind, Field field) {
@@ -270,24 +278,9 @@ public class Island {
         return newEntities;
     }
 
-    private Position getFieldPosition(Field field) {
-        for (int row = 0; row < this.fields.size(); row++) {
-            for (int col = 0; col < this.fields.get(row).size(); col++) {
-                if (this.fields.get(row).get(col) == field) {
-                    return new Position(row, col);
-                }
-            }
-        }
-        return null;
-    }
-
     private Field getFieldByPosition(Position position) {
-        if (position.x < 0 || position.x >= this.fields.size())
-            return null;
-        if (position.y < 0 || position.y >= this.fields.get(0).size())
-            return null;
+        return this.fields.get(position.getY()).get(position.getX());
 
-        return this.fields.get(position.x).get(position.y);
     }
 
     private long countAnimalsOnFieldByKind(Field field, Class<? extends AbstractEntity> kind) {
@@ -301,21 +294,21 @@ public class Island {
         var maxOnTheCell = characteristics.getMaxOnTheCell();
         int radius = 1;
         while (radius <= maxRadius) {
-            Position curPosition = getFieldPosition(sourceField);
+            Position curPosition = sourceField.getPosition();
             List<Field> variants = new ArrayList<>();
-            Field fieldVariant = getFieldByPosition(new Position(curPosition.x - radius, curPosition.y));
+            Field fieldVariant = getFieldByPosition(new Position(curPosition.getX() - radius, curPosition.getY()));
             if (fieldVariant != null) {
                 variants.add(fieldVariant);
             }
-            fieldVariant = getFieldByPosition(new Position(curPosition.x + radius, curPosition.y));
+            fieldVariant = getFieldByPosition(new Position(curPosition.getX() + radius, curPosition.getY()));
             if (fieldVariant != null) {
                 variants.add(fieldVariant);
             }
-            fieldVariant = getFieldByPosition(new Position(curPosition.x, curPosition.y - radius));
+            fieldVariant = getFieldByPosition(new Position(curPosition.getX(), curPosition.getY() - radius));
             if (fieldVariant != null) {
                 variants.add(fieldVariant);
             }
-            fieldVariant = getFieldByPosition(new Position(curPosition.x, curPosition.y + radius));
+            fieldVariant = getFieldByPosition(new Position(curPosition.getX(), curPosition.getY() + radius));
             if (fieldVariant != null) {
                 variants.add(fieldVariant);
             }
@@ -353,15 +346,39 @@ public class Island {
         return Collections.emptyList();
     }
 
-    @Getter
-    @Setter
-    private class Position {
-        private int x = 0;
-        private int y = 0;
+    public Map<String, Map<String, Long>> entityStatsByFields() {
+        return this.getFields().stream().flatMap(Collection::stream)
+                .collect(HashMap::new,
+                        (r, field) -> r.put(
+                                JsonBodyGenerator.build(field),
+                                field.getEntities().stream()
+                                        .collect(
+                                                Collectors.groupingBy(entity -> entity.getClass().getSimpleName(), Collectors.counting())
+                                        )
+                        ), (r, r1) -> {
+                        });
+    }
 
-        public Position(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
+    public Map<Class<? extends AbstractEntity>, Long> entityState() {
+        return this.getFields().stream()
+                .flatMap(Collection::stream)
+                .flatMap(field -> field.getEntities().stream())
+                .collect(Collectors.groupingBy(AbstractEntity::getClass, Collectors.counting()));
+    }
+
+    public Map<String, String> compareStates(
+            Map<Class<? extends AbstractEntity>, Long> anotherState
+    ) {
+        Map<String, String> result = new HashMap<>();
+        Map<Class<? extends AbstractEntity>, Long> currentState = entityState();
+
+        MapDifference<Class<? extends AbstractEntity>, Long> difference = Maps.difference(currentState, anotherState);
+        difference.entriesOnlyOnLeft().forEach((aClass, aLong) ->
+                result.put(aClass.getSimpleName(), "bornt: " + aLong));
+        difference.entriesOnlyOnLeft().forEach((aClass, aLong) ->
+                result.put(aClass.getSimpleName(), "completely died: " + aLong));
+        difference.entriesDiffering().forEach((aClass, longValueDifference) ->
+                result.put(aClass.getSimpleName(), String.valueOf(longValueDifference.leftValue() - longValueDifference.rightValue())));
+        return result;
     }
 }

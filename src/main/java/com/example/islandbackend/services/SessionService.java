@@ -1,17 +1,20 @@
 package com.example.islandbackend.services;
 
+import com.example.islandbackend.models.animals.AbstractEntity;
 import com.example.islandbackend.models.areas.Island;
 import com.example.islandbackend.models.processes.Session;
 import com.example.islandbackend.models.processes.SessionDispatcher;
 import com.example.islandbackend.models.processes.Step;
 import com.example.islandbackend.presentators.JsonBodyGenerator;
+import com.example.islandbackend.presentators.NextStepPresentator;
 import com.example.islandbackend.presentators.SessionPresentator;
-import com.example.islandbackend.presentators.StepPresentator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 @Service
 public class SessionService {
@@ -54,14 +57,16 @@ public class SessionService {
     public String nextStep(String sessionId) {
         Session session = sessionDispatcher.getSessionById(sessionId);
         Step currentStep = session.getCurrentStep();
-        Integer currentStepNumber = currentStep.getStepNumber();
+        int currentStepNumber = currentStep.getStepNumber();
         Island currentIslandState = currentStep.getIslandState();
+
+        Map<Class<? extends AbstractEntity>, Long> previousIslandState = currentIslandState.entityState();
 
         currentIslandState.feed();
         currentIslandState.reduceSatiety();
         currentIslandState.reproduce();
         currentIslandState.move();
-        
+
         Step nextStep = new Step();
         nextStep.setSession(session);
         nextStep.setStepNumber(currentStepNumber + 1);
@@ -69,6 +74,6 @@ public class SessionService {
         nextStep.getIslandState().setCurrentStep(nextStep);
         session.setCurrentStep(nextStep);
 
-        return JsonBodyGenerator.build(new StepPresentator(nextStep));
+        return JsonBodyGenerator.build(new NextStepPresentator(nextStep, previousIslandState));
     }
 }
