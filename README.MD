@@ -95,7 +95,7 @@ _- get the population of the zero step:_
 
 /islands/{islandId}/summary
 
-_- mgo to the next step:_
+_- go to the next step:_
 
 /sessions/{sessionId}/nextstep
 
